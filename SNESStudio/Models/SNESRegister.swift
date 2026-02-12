@@ -1,0 +1,372 @@
+import Foundation
+
+enum RegisterCategory: String, CaseIterable, Identifiable, Codable {
+    case ppu    = "PPU"
+    case apu    = "APU"
+    case wram   = "WRAM"
+    case cpu    = "CPU"
+    case dma    = "DMA"
+    case joypad = "Joypad"
+
+    var id: String { rawValue }
+}
+
+enum RegisterAccess: String, Codable {
+    case writeOnly = "W"
+    case readOnly  = "R"
+    case readWrite = "R/W"
+}
+
+struct BitField: Codable, Equatable {
+    let position: String   // e.g. "7", "4-0", "7-6"
+    let name: String
+    let description: String
+}
+
+struct SNESRegister: Identifiable, Hashable, Codable {
+    var id: String { String(format: "$%04X", address) }
+    let address: UInt16
+    let name: String
+    let fullName: String
+    let category: RegisterCategory
+    let access: RegisterAccess
+    let bits: [BitField]?
+    let description: String
+
+    static func == (lhs: SNESRegister, rhs: SNESRegister) -> Bool {
+        lhs.address == rhs.address
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(address)
+    }
+}
+
+// MARK: - SNES Register Database
+
+extension SNESRegister {
+    static let allRegisters: [SNESRegister] = ppuRegisters + cpuRegisters + dmaRegisters + joypadRegisters
+
+    // MARK: PPU Registers ($2100-$213F)
+
+    static let ppuRegisters: [SNESRegister] = [
+        SNESRegister(address: 0x2100, name: "INIDISP", fullName: "Display Control 1",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7", name: "Force Blank", description: "1 = screen off"),
+                            BitField(position: "3-0", name: "Brightness", description: "0=black, F=full")],
+                     description: "Master brightness and force blank control"),
+        SNESRegister(address: 0x2101, name: "OBSEL", fullName: "Object Size & Base",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7-5", name: "Size Select", description: "OBJ size combination"),
+                            BitField(position: "4-3", name: "Name Select", description: "Gap between name tables"),
+                            BitField(position: "2-0", name: "Base Address", description: "Base address for OBJ tiles (x 8KB)")],
+                     description: "Sprite size selection and VRAM base address for OBJ tiles"),
+        SNESRegister(address: 0x2102, name: "OAMADDL", fullName: "OAM Address Low",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Low byte of OAM address for read/write"),
+        SNESRegister(address: 0x2103, name: "OAMADDH", fullName: "OAM Address High",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7", name: "Priority", description: "Priority rotation"),
+                            BitField(position: "0", name: "Address", description: "Bit 9 of OAM address")],
+                     description: "High bit of OAM address and priority rotation"),
+        SNESRegister(address: 0x2104, name: "OAMDATA", fullName: "OAM Data Write",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Write data to OAM (write twice for each word)"),
+        SNESRegister(address: 0x2105, name: "BGMODE", fullName: "BG Mode & Character Size",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7", name: "BG4 Tile Size", description: "0=8x8, 1=16x16"),
+                            BitField(position: "6", name: "BG3 Tile Size", description: "0=8x8, 1=16x16"),
+                            BitField(position: "5", name: "BG4 Tile Size", description: "0=8x8, 1=16x16"),
+                            BitField(position: "4", name: "BG1 Tile Size", description: "0=8x8, 1=16x16"),
+                            BitField(position: "3", name: "BG3 Priority", description: "Mode 1: BG3 priority bit"),
+                            BitField(position: "2-0", name: "BG Mode", description: "Background mode (0-7)")],
+                     description: "Set BG mode (0-7) and character size for each BG layer"),
+        SNESRegister(address: 0x2106, name: "MOSAIC", fullName: "Mosaic Size & Enable",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7-4", name: "Size", description: "Mosaic pixel size (1-16)"),
+                            BitField(position: "3-0", name: "Enable", description: "Enable mosaic per BG (bit0=BG1)")],
+                     description: "Mosaic effect size and which BGs are affected"),
+        SNESRegister(address: 0x2107, name: "BG1SC", fullName: "BG1 Screen Base & Size",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7-2", name: "Base Address", description: "Tilemap VRAM address (x 1KB)"),
+                            BitField(position: "1-0", name: "Map Size", description: "00=32x32, 01=64x32, 10=32x64, 11=64x64")],
+                     description: "BG1 tilemap VRAM address and map size"),
+        SNESRegister(address: 0x2108, name: "BG2SC", fullName: "BG2 Screen Base & Size",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG2 tilemap VRAM address and map size (same format as BG1SC)"),
+        SNESRegister(address: 0x2109, name: "BG3SC", fullName: "BG3 Screen Base & Size",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG3 tilemap VRAM address and map size (same format as BG1SC)"),
+        SNESRegister(address: 0x210A, name: "BG4SC", fullName: "BG4 Screen Base & Size",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG4 tilemap VRAM address and map size (same format as BG1SC)"),
+        SNESRegister(address: 0x210B, name: "BG12NBA", fullName: "BG1/BG2 Character Base",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7-4", name: "BG2 Base", description: "BG2 tile data address (x 4KB)"),
+                            BitField(position: "3-0", name: "BG1 Base", description: "BG1 tile data address (x 4KB)")],
+                     description: "Character data VRAM base address for BG1 and BG2"),
+        SNESRegister(address: 0x210C, name: "BG34NBA", fullName: "BG3/BG4 Character Base",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Character data VRAM base address for BG3 and BG4"),
+        SNESRegister(address: 0x210D, name: "BG1HOFS", fullName: "BG1 Horizontal Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG1 horizontal scroll offset (write twice, low then high)"),
+        SNESRegister(address: 0x210E, name: "BG1VOFS", fullName: "BG1 Vertical Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG1 vertical scroll offset (write twice, low then high)"),
+        SNESRegister(address: 0x210F, name: "BG2HOFS", fullName: "BG2 Horizontal Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG2 horizontal scroll offset"),
+        SNESRegister(address: 0x2110, name: "BG2VOFS", fullName: "BG2 Vertical Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "BG2 vertical scroll offset"),
+        SNESRegister(address: 0x2111, name: "BG3HOFS", fullName: "BG3 Horizontal Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil, description: "BG3 horizontal scroll offset"),
+        SNESRegister(address: 0x2112, name: "BG3VOFS", fullName: "BG3 Vertical Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil, description: "BG3 vertical scroll offset"),
+        SNESRegister(address: 0x2113, name: "BG4HOFS", fullName: "BG4 Horizontal Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil, description: "BG4 horizontal scroll offset"),
+        SNESRegister(address: 0x2114, name: "BG4VOFS", fullName: "BG4 Vertical Scroll",
+                     category: .ppu, access: .writeOnly, bits: nil, description: "BG4 vertical scroll offset"),
+        SNESRegister(address: 0x2115, name: "VMAIN", fullName: "VRAM Address Increment",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7", name: "Increment", description: "0=after $2118, 1=after $2119"),
+                            BitField(position: "3-2", name: "Remap", description: "Address translation"),
+                            BitField(position: "1-0", name: "Step", description: "00=1, 01=32, 10=128, 11=128")],
+                     description: "VRAM address increment mode and step size"),
+        SNESRegister(address: 0x2116, name: "VMADDL", fullName: "VRAM Address Low",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Low byte of VRAM word address"),
+        SNESRegister(address: 0x2117, name: "VMADDH", fullName: "VRAM Address High",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "High byte of VRAM word address"),
+        SNESRegister(address: 0x2118, name: "VMDATAL", fullName: "VRAM Data Write Low",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Write low byte of VRAM data"),
+        SNESRegister(address: 0x2119, name: "VMDATAH", fullName: "VRAM Data Write High",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Write high byte of VRAM data"),
+        SNESRegister(address: 0x211A, name: "M7SEL", fullName: "Mode 7 Settings",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7-6", name: "Screen Over", description: "00/01=wrap, 10=transparent, 11=tile 0"),
+                            BitField(position: "1", name: "V-Flip", description: "Vertical flip"),
+                            BitField(position: "0", name: "H-Flip", description: "Horizontal flip")],
+                     description: "Mode 7 rotation/scaling settings"),
+        SNESRegister(address: 0x2121, name: "CGADD", fullName: "CGRAM Address",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Address for CGRAM (palette) read/write"),
+        SNESRegister(address: 0x2122, name: "CGDATA", fullName: "CGRAM Data Write",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Write palette data (BGR555, write twice per color)"),
+        SNESRegister(address: 0x212C, name: "TM", fullName: "Main Screen Designation",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "4", name: "OBJ", description: "Sprites on main screen"),
+                            BitField(position: "3", name: "BG4", description: "BG4 on main screen"),
+                            BitField(position: "2", name: "BG3", description: "BG3 on main screen"),
+                            BitField(position: "1", name: "BG2", description: "BG2 on main screen"),
+                            BitField(position: "0", name: "BG1", description: "BG1 on main screen")],
+                     description: "Enable layers on the main screen"),
+        SNESRegister(address: 0x212D, name: "TS", fullName: "Sub Screen Designation",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Enable layers on the sub screen (same format as TM)"),
+        SNESRegister(address: 0x2130, name: "CGWSEL", fullName: "Color Math Control A",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Color addition/subtraction select and clip settings"),
+        SNESRegister(address: 0x2131, name: "CGADSUB", fullName: "Color Math Control B",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "7", name: "Mode", description: "0=addition, 1=subtraction"),
+                            BitField(position: "6", name: "Half", description: "1=half color math"),
+                            BitField(position: "5", name: "Backdrop", description: "Apply to backdrop"),
+                            BitField(position: "4", name: "OBJ", description: "Apply to OBJ pal 4-7"),
+                            BitField(position: "3-0", name: "BG", description: "Apply to BG1-4")],
+                     description: "Color math add/subtract and which layers to apply"),
+        SNESRegister(address: 0x2132, name: "COLDATA", fullName: "Fixed Color Data",
+                     category: .ppu, access: .writeOnly, bits: nil,
+                     description: "Fixed color for color math (R/G/B components, write per channel)"),
+        SNESRegister(address: 0x2133, name: "SETINI", fullName: "Display Control 2",
+                     category: .ppu, access: .writeOnly,
+                     bits: [BitField(position: "6", name: "Mode 7 EXTBG", description: "Enable EXTBG in mode 7"),
+                            BitField(position: "3", name: "Pseudo-Hires", description: "Enable pseudo hires"),
+                            BitField(position: "2", name: "Overscan", description: "239 lines instead of 224"),
+                            BitField(position: "1", name: "OBJ V-Select", description: "Interlace OBJ"),
+                            BitField(position: "0", name: "Interlace", description: "Enable interlace mode")],
+                     description: "Display settings: interlace, overscan, pseudo-hires, EXTBG"),
+
+        // PPU Read registers
+        SNESRegister(address: 0x2134, name: "MPYL", fullName: "Multiply Result Low",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Mode 7 multiply result low byte"),
+        SNESRegister(address: 0x2135, name: "MPYM", fullName: "Multiply Result Mid",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Mode 7 multiply result middle byte"),
+        SNESRegister(address: 0x2136, name: "MPYH", fullName: "Multiply Result High",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Mode 7 multiply result high byte"),
+        SNESRegister(address: 0x2137, name: "SLHV", fullName: "Software Latch H/V Counter",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Latch current H/V counter values"),
+        SNESRegister(address: 0x2138, name: "OAMDATAREAD", fullName: "OAM Data Read",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Read data from OAM"),
+        SNESRegister(address: 0x2139, name: "VMDATALREAD", fullName: "VRAM Data Read Low",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Read low byte from VRAM"),
+        SNESRegister(address: 0x213A, name: "VMDATAHREAD", fullName: "VRAM Data Read High",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Read high byte from VRAM"),
+        SNESRegister(address: 0x213B, name: "CGDATAREAD", fullName: "CGRAM Data Read",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Read palette data from CGRAM"),
+        SNESRegister(address: 0x213C, name: "OPHCT", fullName: "H Counter Data",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Horizontal counter value (latched by SLHV or controller read)"),
+        SNESRegister(address: 0x213D, name: "OPVCT", fullName: "V Counter Data",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "Vertical counter value"),
+        SNESRegister(address: 0x213E, name: "STAT77", fullName: "PPU1 Status",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "PPU1 status flags (range over, time over, PPU1 version)"),
+        SNESRegister(address: 0x213F, name: "STAT78", fullName: "PPU2 Status",
+                     category: .ppu, access: .readOnly, bits: nil,
+                     description: "PPU2 status flags (interlace field, external latch, PAL/NTSC)"),
+    ]
+
+    // MARK: CPU Registers ($4200-$421F)
+
+    static let cpuRegisters: [SNESRegister] = [
+        SNESRegister(address: 0x4200, name: "NMITIMEN", fullName: "NMI/IRQ Enable",
+                     category: .cpu, access: .writeOnly,
+                     bits: [BitField(position: "7", name: "NMI Enable", description: "Enable VBlank NMI"),
+                            BitField(position: "5-4", name: "IRQ Mode", description: "00=off, 01=H, 10=V, 11=H+V"),
+                            BitField(position: "0", name: "Auto Joypad", description: "Enable auto joypad read")],
+                     description: "Enable/disable NMI, IRQ, and auto joypad read"),
+        SNESRegister(address: 0x4201, name: "WRIO", fullName: "I/O Port Write",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Programmable I/O port output"),
+        SNESRegister(address: 0x4202, name: "WRMPYA", fullName: "Multiply A",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Multiplicand A (8-bit unsigned)"),
+        SNESRegister(address: 0x4203, name: "WRMPYB", fullName: "Multiply B",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Multiplicand B — starts multiplication (result in RDMPYL/H)"),
+        SNESRegister(address: 0x4204, name: "WRDIVL", fullName: "Dividend Low",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Dividend low byte (16-bit unsigned)"),
+        SNESRegister(address: 0x4205, name: "WRDIVH", fullName: "Dividend High",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Dividend high byte"),
+        SNESRegister(address: 0x4206, name: "WRDIVB", fullName: "Divisor",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Divisor — starts division (result in RDDIVL/H, remainder in RDMPYL/H)"),
+        SNESRegister(address: 0x4207, name: "HTIMEL", fullName: "H-Count Timer Low",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "IRQ H-counter target low byte"),
+        SNESRegister(address: 0x4208, name: "HTIMEH", fullName: "H-Count Timer High",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "IRQ H-counter target high bit"),
+        SNESRegister(address: 0x4209, name: "VTIMEL", fullName: "V-Count Timer Low",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "IRQ V-counter target low byte"),
+        SNESRegister(address: 0x420A, name: "VTIMEH", fullName: "V-Count Timer High",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "IRQ V-counter target high bit"),
+        SNESRegister(address: 0x420B, name: "MDMAEN", fullName: "DMA Enable",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Start general-purpose DMA (one bit per channel 0-7)"),
+        SNESRegister(address: 0x420C, name: "HDMAEN", fullName: "HDMA Enable",
+                     category: .cpu, access: .writeOnly, bits: nil,
+                     description: "Enable HDMA channels (one bit per channel 0-7)"),
+        SNESRegister(address: 0x420D, name: "MEMSEL", fullName: "ROM Access Speed",
+                     category: .cpu, access: .writeOnly,
+                     bits: [BitField(position: "0", name: "FastROM", description: "1 = 6 cycle, 0 = 8 cycle")],
+                     description: "Select ROM access speed (FastROM/SlowROM)"),
+
+        // CPU Read registers
+        SNESRegister(address: 0x4210, name: "RDNMI", fullName: "NMI Flag",
+                     category: .cpu, access: .readOnly,
+                     bits: [BitField(position: "7", name: "NMI Flag", description: "Set at VBlank, cleared on read"),
+                            BitField(position: "3-0", name: "CPU Version", description: "5A22 version")],
+                     description: "VBlank NMI flag (read to acknowledge NMI)"),
+        SNESRegister(address: 0x4211, name: "TIMEUP", fullName: "IRQ Flag",
+                     category: .cpu, access: .readOnly,
+                     bits: [BitField(position: "7", name: "IRQ Flag", description: "Set when H/V counter matches")],
+                     description: "H/V timer IRQ flag (read to acknowledge)"),
+        SNESRegister(address: 0x4212, name: "HVBJOY", fullName: "H/V Blank & Joypad Status",
+                     category: .cpu, access: .readOnly,
+                     bits: [BitField(position: "7", name: "V-Blank", description: "1 = in VBlank"),
+                            BitField(position: "6", name: "H-Blank", description: "1 = in HBlank"),
+                            BitField(position: "0", name: "Auto-Joy", description: "1 = auto joypad read in progress")],
+                     description: "H-blank, V-blank, and auto joypad busy flags"),
+        SNESRegister(address: 0x4214, name: "RDDIVL", fullName: "Division Result Low",
+                     category: .cpu, access: .readOnly, bits: nil,
+                     description: "Division quotient low byte"),
+        SNESRegister(address: 0x4215, name: "RDDIVH", fullName: "Division Result High",
+                     category: .cpu, access: .readOnly, bits: nil,
+                     description: "Division quotient high byte"),
+        SNESRegister(address: 0x4216, name: "RDMPYL", fullName: "Multiply/Remainder Low",
+                     category: .cpu, access: .readOnly, bits: nil,
+                     description: "Multiplication result or division remainder low byte"),
+        SNESRegister(address: 0x4217, name: "RDMPYH", fullName: "Multiply/Remainder High",
+                     category: .cpu, access: .readOnly, bits: nil,
+                     description: "Multiplication result or division remainder high byte"),
+    ]
+
+    // MARK: DMA Registers ($4300-$430A for channel 0)
+
+    static let dmaRegisters: [SNESRegister] = [
+        SNESRegister(address: 0x4300, name: "DMAP0", fullName: "DMA Control Channel 0",
+                     category: .dma, access: .readWrite,
+                     bits: [BitField(position: "7", name: "Direction", description: "0=A-bus to B-bus, 1=B to A"),
+                            BitField(position: "6", name: "HDMA Mode", description: "0=direct, 1=indirect"),
+                            BitField(position: "3", name: "A-Bus Step", description: "0=increment, 1=decrement"),
+                            BitField(position: "2-0", name: "Transfer", description: "Transfer mode pattern")],
+                     description: "DMA/HDMA transfer mode and direction for channel 0"),
+        SNESRegister(address: 0x4301, name: "BBAD0", fullName: "DMA B-Bus Address Ch0",
+                     category: .dma, access: .readWrite, bits: nil,
+                     description: "B-bus address ($21xx register) for DMA channel 0"),
+        SNESRegister(address: 0x4302, name: "A1T0L", fullName: "DMA A-Bus Address Low Ch0",
+                     category: .dma, access: .readWrite, bits: nil,
+                     description: "A-bus address low byte for DMA channel 0"),
+        SNESRegister(address: 0x4303, name: "A1T0H", fullName: "DMA A-Bus Address High Ch0",
+                     category: .dma, access: .readWrite, bits: nil,
+                     description: "A-bus address high byte for DMA channel 0"),
+        SNESRegister(address: 0x4304, name: "A1B0", fullName: "DMA A-Bus Bank Ch0",
+                     category: .dma, access: .readWrite, bits: nil,
+                     description: "A-bus bank byte for DMA channel 0"),
+        SNESRegister(address: 0x4305, name: "DAS0L", fullName: "DMA Size Low Ch0",
+                     category: .dma, access: .readWrite, bits: nil,
+                     description: "DMA byte count low byte (0 = 65536 bytes)"),
+        SNESRegister(address: 0x4306, name: "DAS0H", fullName: "DMA Size High Ch0",
+                     category: .dma, access: .readWrite, bits: nil,
+                     description: "DMA byte count high byte"),
+    ]
+
+    // MARK: Joypad Registers ($4218-$421F)
+
+    static let joypadRegisters: [SNESRegister] = [
+        SNESRegister(address: 0x4218, name: "JOY1L", fullName: "Joypad 1 Low",
+                     category: .joypad, access: .readOnly,
+                     bits: [BitField(position: "7", name: "A", description: "A button"),
+                            BitField(position: "6", name: "X", description: "X button"),
+                            BitField(position: "5", name: "L", description: "L shoulder"),
+                            BitField(position: "4", name: "R", description: "R shoulder")],
+                     description: "Joypad 1 button state (A, X, L, R)"),
+        SNESRegister(address: 0x4219, name: "JOY1H", fullName: "Joypad 1 High",
+                     category: .joypad, access: .readOnly,
+                     bits: [BitField(position: "7", name: "B", description: "B button"),
+                            BitField(position: "6", name: "Y", description: "Y button"),
+                            BitField(position: "5", name: "Select", description: "Select button"),
+                            BitField(position: "4", name: "Start", description: "Start button"),
+                            BitField(position: "3", name: "Up", description: "D-pad Up"),
+                            BitField(position: "2", name: "Down", description: "D-pad Down"),
+                            BitField(position: "1", name: "Left", description: "D-pad Left"),
+                            BitField(position: "0", name: "Right", description: "D-pad Right")],
+                     description: "Joypad 1 button state (B, Y, Select, Start, D-pad)"),
+        SNESRegister(address: 0x421A, name: "JOY2L", fullName: "Joypad 2 Low",
+                     category: .joypad, access: .readOnly, bits: nil,
+                     description: "Joypad 2 button state low (same format as JOY1L)"),
+        SNESRegister(address: 0x421B, name: "JOY2H", fullName: "Joypad 2 High",
+                     category: .joypad, access: .readOnly, bits: nil,
+                     description: "Joypad 2 button state high (same format as JOY1H)"),
+    ]
+}

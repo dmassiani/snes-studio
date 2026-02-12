@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #1A1D23;
+    color: #E8ECF1;
+    font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+}
+
+#editor {
+    height: 100%;
+    width: 100%;
+}
+
+.cm-editor {
+    height: 100%;
+}
+
+.cm-scroller {
+    overflow: auto;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #13161B;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2A2E36;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4A5060;
+}
+
+::-webkit-scrollbar-corner {
+    background: #13161B;
+}

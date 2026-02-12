@@ -1,0 +1,57 @@
+name: SNESStudio
+options:
+  bundleIdPrefix: com.snesstudio
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+  defaultConfig: Debug
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+targets:
+  SNESStudio:
+    type: application
+    platform: macOS
+    sources:
+      - path: SNESStudio
+        excludes:
+          - "Resources/**"
+    resources:
+      - path: SNESStudio/Resources/Assets.xcassets
+      - path: SNESStudio/Resources/CodeMirror
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.snesstudio.app
+        PRODUCT_NAME: "SNES Studio"
+        CODE_SIGN_ENTITLEMENTS: SNESStudio/SNESStudio.entitlements
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_STRICT_CONCURRENCY: complete
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    info:
+      path: SNESStudio/Info.plist
+      properties:
+        CFBundleName: "SNES Studio"
+        CFBundleDisplayName: "SNES Studio"
+        CFBundleIdentifier: com.snesstudio.app
+        CFBundleVersion: "1"
+        CFBundleShortVersionString: "0.1.0"
+        CFBundlePackageType: APPL
+        CFBundleExecutable: "$(EXECUTABLE_NAME)"
+        LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
+        NSMainStoryboardFile: ""
+        NSHighResolutionCapable: true
+        NSSupportsAutomaticTermination: false
+        NSSupportsSuddenTermination: false
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: "SNES Project"
+            CFBundleTypeExtensions: ["snesproj"]
+            CFBundleTypeRole: Editor
+          - CFBundleTypeName: "SNES ROM"
+            CFBundleTypeExtensions: ["sfc", "smc"]
+            CFBundleTypeRole: Viewer

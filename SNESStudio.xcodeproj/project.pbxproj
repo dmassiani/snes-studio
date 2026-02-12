@@ -1,0 +1,864 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01BBD2395F2C473B738C7911 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718C5987278C0CE02F089B1 /* ConsoleView.swift */; };
+		01CB07A2A45C3AA22A4C7BE8 /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81DD3F173788F881C4CCF6 /* ProjectManager.swift */; };
+		04C5BA0C43F2D207A9E6622C /* SpriteDrawingNSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7338D10BB1D1399ACDA3622F /* SpriteDrawingNSView.swift */; };
+		093E532F6DDA7703639EE8A2 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15EDCC06F69EEBBCDE2B236 /* KeychainHelper.swift */; };
+		0B255B0A3DFA3CD8201DB6CD /* BGSnapshotRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C86D92AC0E2D25CD159FB /* BGSnapshotRenderer.swift */; };
+		0F07EAB03C9C1F2889E2C9E2 /* ProjectTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE04E63065FE84EBC7408A5B /* ProjectTemplate.swift */; };
+		147D01A73D62A27C3A6C90F1 /* HardwareBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C25845D631E6D5CDA86E94C /* HardwareBudget.swift */; };
+		16734BA530D59C0527EAB987 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E640F0BF1C2654FB49B9E000 /* AppDelegate.swift */; };
+		199A76ECD33F437EE38007DC /* SpriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19824C64D13CD8D3DA2051F6 /* SpriteListView.swift */; };
+		1B1FC6DED2910347984B44A3 /* SNESStudioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDABEF27653A2373A2239417 /* SNESStudioApp.swift */; };
+		1E7F856F8944017BC008F483 /* ROMAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2933E8A0C47FBCA6DE01B8AA /* ROMAnalysis.swift */; };
+		200378F6F5BC8D99415C3AD4 /* RightPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C909B03E43DA35440E76115 /* RightPanelView.swift */; };
+		2045DBD577CFBEABC04271BE /* AITools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35187B1E4F3FE40332E1F003 /* AITools.swift */; };
+		2135D23C375F3CEC2828E3BF /* ROMTileExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70B000299245CF1D13151D5 /* ROMTileExplorerView.swift */; };
+		23E0FF0BC87DB10AA7B20C99 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F715429BFEE2CD540A22DB8E /* ToolbarView.swift */; };
+		2F1A7DB7E9F122DA7D9D99FC /* ScreenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BEF033B4B0ECDB0E63CBD9 /* ScreenListView.swift */; };
+		2F6C670E1C6930E1F36C4178 /* SNESLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11050BEA13D1EFDD01C5C381 /* SNESLevel.swift */; };
+		2F6E43AB5CD73AB33A61C530 /* NewProjectSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E6F1E3EC25AF66B3DFC81C /* NewProjectSheet.swift */; };
+		2FF3822F471534DA282B2D57 /* HardwareBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417BDA0925921BE2C1EDBEE9 /* HardwareBarView.swift */; };
+		3114628F1181911F36AE210F /* VRAMViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E6C1BF62755018EC5B6CF2 /* VRAMViewerView.swift */; };
+		331160642B7CFE1E73E4DCE6 /* WorldData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0F172D3FDC242CE8F55007 /* WorldData.swift */; };
+		338B8133B3ADD68EAD455AE3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F20F8652B7F7BCD076C100 /* AppState.swift */; };
+		353DD29341522AFEF7D5352A /* BGMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7663F0B936E3EAF1135F53BC /* BGMode.swift */; };
+		36E1EF9B75A9B831361B1310 /* AnthropicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC0D435B3FE6ED76591A7F8 /* AnthropicService.swift */; };
+		3AF370B913B750B5FBBABA6F /* TilesetBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5836994B293771826319D08C /* TilesetBrowserView.swift */; };
+		3FE62467EF601B17541D6F0C /* SpriteDecomposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4367320E42DAEC108223450 /* SpriteDecomposer.swift */; };
+		4058B4C87756CB0E02CC42F8 /* LevelTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D2A973A6474669961C382 /* LevelTabBar.swift */; };
+		43FFC0CA2A9B921C851B9587 /* TilemapPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860C0430C4B595C026E0C140 /* TilemapPropertiesView.swift */; };
+		45A093285739D72AD33904D1 /* VRAMLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072F4428ED35BBFDD257FBB /* VRAMLayout.swift */; };
+		4A25F0990726061879EF3AB3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FC80EB7822720CBB8ACC /* MainView.swift */; };
+		4A50ECC994F4E5EECFE3D717 /* SNESTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C2FFF165D42570BD39BD3 /* SNESTile.swift */; };
+		4BE09D04B990A5F19E53D0DC /* RegistersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E9C0C182E7052D2A0023C /* RegistersView.swift */; };
+		4D89A3BAA7D2DD468ED500CF /* ROMHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7838547E2789ED16AAD3EA /* ROMHeaderView.swift */; };
+		507CC91CF6DFDDF4E79AF0F0 /* BGR555ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8868876A510A6722C7765B /* BGR555ColorPicker.swift */; };
+		50B671D5F023E8039B22C7CA /* SpriteCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553D5368DD8AAE8567523BD /* SpriteCanvas.swift */; };
+		517A675720C1C8B55E205AAB /* TileEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0984834BA158B1227902A5 /* TileEditorView.swift */; };
+		567F87E69E97D74C8B7D201F /* LevelLayerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54077FD95E40F44CBCDA7C /* LevelLayerPanel.swift */; };
+		5DE4E8B414E1B9667FD58D27 /* CodeEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6446803BA02C5269BDF7DE /* CodeEditorView.swift */; };
+		5EB7C192416A6F40F6D93495 /* CartridgeConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0C0C5293E1D6F36ECE3C7 /* CartridgeConfigView.swift */; };
+		5F4B5B8F3F52FF51C4928C23 /* SpriteDrawingWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E68D3D8EF9CAB5E47DDA441 /* SpriteDrawingWindowView.swift */; };
+		617F1A673E4D3FC79F915E5B /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AA01F8EFF85519AF0F3D86 /* ChatView.swift */; };
+		6563CDE87BAEDE31B1841928 /* CenterEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661F72F10858D4E57398422 /* CenterEditorView.swift */; };
+		667249CFE0461729AA638BE9 /* LevelEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58447335AAD7CA70747E8C7 /* LevelEditorView.swift */; };
+		6819F5F7E85AE1265A8C0250 /* SNESSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC5A52F7638B397111606E2 /* SNESSprite.swift */; };
+		70AC5F4FCA26D5503209AEE9 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D54EFFDDFE320844A8C18D6 /* WelcomeView.swift */; };
+		771225545154ACE7B606299C /* WorldEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEECDB6A76A4A3C00AA6D02 /* WorldEditorView.swift */; };
+		7A2608608E5F11B49166801C /* SpriteDrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DE7E18E6DBAED848307A54 /* SpriteDrawingCanvas.swift */; };
+		7B46A1ED3269777A01ECA7AA /* SNESColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE2CCD31B215FCE279EF39 /* SNESColor.swift */; };
+		7C68CD9410FBC5E647021B52 /* ConsoleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330AF4C5676AD79E9FFDC7B1 /* ConsoleMessage.swift */; };
+		7DF287AFC67E036F769975B9 /* PyramidLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7371D13784CC0649734F82 /* PyramidLevel.swift */; };
+		800778C90D65D6820A702D8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B5207EADC3BC737DD7F041 /* SettingsView.swift */; };
+		83377C9E5CEABD3F5AB6EF0A /* ParallaxPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC17E5E62EA652B094CAA9 /* ParallaxPreviewView.swift */; };
+		86DE9536E10E738954709384 /* ControllerMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E648ED7316AF70EEB9B2AFD /* ControllerMapping.swift */; };
+		885FBF68DB051E8E7CCD09C5 /* AIToolExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D14154284F61CDAFBCDBE4 /* AIToolExecutor.swift */; };
+		8B98D6C6BB63AAFE8CBB6598 /* SNESPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8179A47D350111D9D5C8A /* SNESPalette.swift */; };
+		90D4F0A269AC9DC72C6E6B29 /* MemoryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA9449819A3CA86AD69C577 /* MemoryMapView.swift */; };
+		93995D18854755A3F921341C /* SNESTilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137D81E0C38D6B5AE740E85 /* SNESTilemap.swift */; };
+		93AEC5B0DDB8EB9566EB2091 /* ResizeHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3428A6AE70E9E3ADA89FE603 /* ResizeHandle.swift */; };
+		9AD3D5B4A443E02EC6632353 /* ZoneListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B30870AA0E09B9D9CBB9E34 /* ZoneListView.swift */; };
+		9C8D2CAF3352A3C5C2DBBD4E /* SNESRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD60BBB60F81A81F96DD85C /* SNESRegister.swift */; };
+		A6A286E0EC51E4848974F719 /* CodeEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DE8103DFB589FBE829E66 /* CodeEditorCoordinator.swift */; };
+		AB14E0E97160085B2BF10A78 /* AnimationTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9E02D358993D61AAB5579 /* AnimationTimelineView.swift */; };
+		AC06C335208BFBC3C9114ECD /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE0D463493276B04953DCDC /* ChatManager.swift */; };
+		B0BEC335AB5413AEAF4DCA1B /* TilemapEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A3F86C4C7DC955CBE78A3E /* TilemapEditorView.swift */; };
+		B238D082B6C8F8F975B23082 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8586821722B7CD1E1010209F /* SidebarItem.swift */; };
+		B5F19A5E38A439D088B8A440 /* SpriteSheetImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2DACA37A34737A7F382BB7 /* SpriteSheetImportView.swift */; };
+		BE20EF2CB88FDA092738420E /* SNESTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A99C221ADFBEC48F54F913 /* SNESTheme.swift */; };
+		BEB4F839894BB594EE79FE8D /* WorldGridCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10CB586E6368266D34FF96E /* WorldGridCanvas.swift */; };
+		BF1F2F8742A5CE7D39BBD03C /* LevelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3AA425CE133986BE712695 /* LevelCanvas.swift */; };
+		C2206D4AD8EABB3A946FCFC3 /* SpriteSheetImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753BB3B34BBEFD1045F314E /* SpriteSheetImporter.swift */; };
+		C6829EF5496ECE399C8A0342 /* BuildSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E643DC38CACEACB3B34D03 /* BuildSystem.swift */; };
+		C78F43B60CC24CC674377705 /* ROMAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE27D7D40BA028F391882DC /* ROMAnalyzerView.swift */; };
+		CA76F4492B7A287693C70B57 /* SNESProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66F38C2C935BAB27E92062C /* SNESProject.swift */; };
+		CAF47D87D272F20E9C45A64B /* ScreenPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC085AF475FFF6CB419070EE /* ScreenPropertiesView.swift */; };
+		CC0A5B1B7847642C89918B5F /* PaletteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97FBDD7D248F183258D2244 /* PaletteEditorView.swift */; };
+		CF1E5BE28E469BE6054A0624 /* CartridgeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013245A2D4C82305377489A6 /* CartridgeConfig.swift */; };
+		CF80DCA74575B9BDBA521242 /* ROMPaletteExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B2692270A59F14E9E6BA7 /* ROMPaletteExplorerView.swift */; };
+		D5D0514D4C3DBC8A1D29A3E8 /* SpriteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EAAC9748D244DDAF299DFE /* SpriteEditorView.swift */; };
+		D7B9CD015CD6CE2D968E7FAF /* ROMAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF218070BDB2950D6059CE6E /* ROMAnalyzer.swift */; };
+		D8B76C8A066D08D0B495B672 /* SpriteDrawingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE78BA3625BFED23E6C43D7 /* SpriteDrawingSession.swift */; };
+		DA2CA64904707BBBDD3693B6 /* LinkerConfigGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0C6FF036D3987AA0AC79DA /* LinkerConfigGenerator.swift */; };
+		DB47B1C0EBD076679EF111C8 /* EditorTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5171203538FEF4F47E46B55 /* EditorTab.swift */; };
+		DEFF3CCFC54CD84E3001DFE0 /* ControllerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68120749C9EE54A282C058D /* ControllerEditorView.swift */; };
+		E1E0E02BBFA43C0FB08C63B7 /* LayerViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9119F082E4AC00B1C5C9192E /* LayerViewerView.swift */; };
+		E234844BAAE12601F5D501E8 /* TileEditorCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ED858B6177F4917582E7B /* TileEditorCanvas.swift */; };
+		E472FCA4685D66956C863833 /* PalettePresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E318A21D3C820E02F053D0 /* PalettePresets.swift */; };
+		E69250CD2DABD3E90B874BAD /* VRAMBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FC31217EBFAF84E24DAA0B /* VRAMBudgetView.swift */; };
+		EA7051CCAF0107EA4F156976 /* TransitionEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877F1A1040C907415F9B74 /* TransitionEditorView.swift */; };
+		ED24136673FB216487762417 /* TilemapCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481294DCEF2030893116A1B6 /* TilemapCanvas.swift */; };
+		ED6733931C21ECBED4080534 /* AssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F13C8684F88B2258EBD16 /* AssetStore.swift */; };
+		EF5DF1DC7921C33565DDAD41 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535D81A1102E8566C5A461E /* ChatMessage.swift */; };
+		F0AD3CBDAE1DDD7047436488 /* VRAMBudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015E15F9BCE997167E24FCB /* VRAMBudgetCalculator.swift */; };
+		F3C7B3DD96AFE8F2947C2EA5 /* EditorUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9119BFD7B4ADF3545679 /* EditorUndoManager.swift */; };
+		FFA9E0EFC195C634E2927F05 /* SNESControllerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B7927B27E4DEEBE4485B4 /* SNESControllerShape.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0015E15F9BCE997167E24FCB /* VRAMBudgetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRAMBudgetCalculator.swift; sourceTree = "<group>"; };
+		00AA01F8EFF85519AF0F3D86 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		013245A2D4C82305377489A6 /* CartridgeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartridgeConfig.swift; sourceTree = "<group>"; };
+		0661F72F10858D4E57398422 /* CenterEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterEditorView.swift; sourceTree = "<group>"; };
+		098ED858B6177F4917582E7B /* TileEditorCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileEditorCanvas.swift; sourceTree = "<group>"; };
+		0E648ED7316AF70EEB9B2AFD /* ControllerMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerMapping.swift; sourceTree = "<group>"; };
+		0EBF9119BFD7B4ADF3545679 /* EditorUndoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorUndoManager.swift; sourceTree = "<group>"; };
+		1072F4428ED35BBFDD257FBB /* VRAMLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRAMLayout.swift; sourceTree = "<group>"; };
+		10877F1A1040C907415F9B74 /* TransitionEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionEditorView.swift; sourceTree = "<group>"; };
+		11050BEA13D1EFDD01C5C381 /* SNESLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESLevel.swift; sourceTree = "<group>"; };
+		1137D81E0C38D6B5AE740E85 /* SNESTilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESTilemap.swift; sourceTree = "<group>"; };
+		119C2FFF165D42570BD39BD3 /* SNESTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESTile.swift; sourceTree = "<group>"; };
+		121D2A973A6474669961C382 /* LevelTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTabBar.swift; sourceTree = "<group>"; };
+		19824C64D13CD8D3DA2051F6 /* SpriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteListView.swift; sourceTree = "<group>"; };
+		1BD0C0C5293E1D6F36ECE3C7 /* CartridgeConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartridgeConfigView.swift; sourceTree = "<group>"; };
+		1DA9449819A3CA86AD69C577 /* MemoryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMapView.swift; sourceTree = "<group>"; };
+		1E68D3D8EF9CAB5E47DDA441 /* SpriteDrawingWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingWindowView.swift; sourceTree = "<group>"; };
+		24A99C221ADFBEC48F54F913 /* SNESTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESTheme.swift; sourceTree = "<group>"; };
+		2933E8A0C47FBCA6DE01B8AA /* ROMAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROMAnalysis.swift; sourceTree = "<group>"; };
+		2A2DACA37A34737A7F382BB7 /* SpriteSheetImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheetImportView.swift; sourceTree = "<group>"; };
+		2AEECDB6A76A4A3C00AA6D02 /* WorldEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldEditorView.swift; sourceTree = "<group>"; };
+		2B1E9C0C182E7052D2A0023C /* RegistersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistersView.swift; sourceTree = "<group>"; };
+		2B30870AA0E09B9D9CBB9E34 /* ZoneListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneListView.swift; sourceTree = "<group>"; };
+		2F70FC80EB7822720CBB8ACC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		330AF4C5676AD79E9FFDC7B1 /* ConsoleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleMessage.swift; sourceTree = "<group>"; };
+		3428A6AE70E9E3ADA89FE603 /* ResizeHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizeHandle.swift; sourceTree = "<group>"; };
+		35187B1E4F3FE40332E1F003 /* AITools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AITools.swift; sourceTree = "<group>"; };
+		3C909B03E43DA35440E76115 /* RightPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightPanelView.swift; sourceTree = "<group>"; };
+		3E8C86D92AC0E2D25CD159FB /* BGSnapshotRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSnapshotRenderer.swift; sourceTree = "<group>"; };
+		417BDA0925921BE2C1EDBEE9 /* HardwareBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareBarView.swift; sourceTree = "<group>"; };
+		44D14154284F61CDAFBCDBE4 /* AIToolExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIToolExecutor.swift; sourceTree = "<group>"; };
+		481294DCEF2030893116A1B6 /* TilemapCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilemapCanvas.swift; sourceTree = "<group>"; };
+		4E81DD3F173788F881C4CCF6 /* ProjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
+		4FD60BBB60F81A81F96DD85C /* SNESRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESRegister.swift; sourceTree = "<group>"; };
+		4FE9E02D358993D61AAB5579 /* AnimationTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTimelineView.swift; sourceTree = "<group>"; };
+		50E643DC38CACEACB3B34D03 /* BuildSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildSystem.swift; sourceTree = "<group>"; };
+		51A3F86C4C7DC955CBE78A3E /* TilemapEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilemapEditorView.swift; sourceTree = "<group>"; };
+		5836994B293771826319D08C /* TilesetBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesetBrowserView.swift; sourceTree = "<group>"; };
+		67EAAC9748D244DDAF299DFE /* SpriteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteEditorView.swift; sourceTree = "<group>"; };
+		6B0F172D3FDC242CE8F55007 /* WorldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldData.swift; sourceTree = "<group>"; };
+		6C5B7927B27E4DEEBE4485B4 /* SNESControllerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESControllerShape.swift; sourceTree = "<group>"; };
+		72ACD51FE79B2C05D47F71EF /* SNESStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNESStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7338D10BB1D1399ACDA3622F /* SpriteDrawingNSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingNSView.swift; sourceTree = "<group>"; };
+		7553D5368DD8AAE8567523BD /* SpriteCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteCanvas.swift; sourceTree = "<group>"; };
+		7663F0B936E3EAF1135F53BC /* BGMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMode.swift; sourceTree = "<group>"; };
+		766B2692270A59F14E9E6BA7 /* ROMPaletteExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROMPaletteExplorerView.swift; sourceTree = "<group>"; };
+		76B8179A47D350111D9D5C8A /* SNESPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESPalette.swift; sourceTree = "<group>"; };
+		7B6446803BA02C5269BDF7DE /* CodeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorView.swift; sourceTree = "<group>"; };
+		7C25845D631E6D5CDA86E94C /* HardwareBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareBudget.swift; sourceTree = "<group>"; };
+		81BEF033B4B0ECDB0E63CBD9 /* ScreenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListView.swift; sourceTree = "<group>"; };
+		82B5207EADC3BC737DD7F041 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8586821722B7CD1E1010209F /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		860C0430C4B595C026E0C140 /* TilemapPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilemapPropertiesView.swift; sourceTree = "<group>"; };
+		8CE0D463493276B04953DCDC /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		909F13C8684F88B2258EBD16 /* AssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetStore.swift; sourceTree = "<group>"; };
+		9119F082E4AC00B1C5C9192E /* LayerViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerViewerView.swift; sourceTree = "<group>"; };
+		9D54EFFDDFE320844A8C18D6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		9F0C6FF036D3987AA0AC79DA /* LinkerConfigGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkerConfigGenerator.swift; sourceTree = "<group>"; };
+		9F54077FD95E40F44CBCDA7C /* LevelLayerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLayerPanel.swift; sourceTree = "<group>"; };
+		A4367320E42DAEC108223450 /* SpriteDecomposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDecomposer.swift; sourceTree = "<group>"; };
+		A5171203538FEF4F47E46B55 /* EditorTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTab.swift; sourceTree = "<group>"; };
+		A66F38C2C935BAB27E92062C /* SNESProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESProject.swift; sourceTree = "<group>"; };
+		A753BB3B34BBEFD1045F314E /* SpriteSheetImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheetImporter.swift; sourceTree = "<group>"; };
+		A7F20F8652B7F7BCD076C100 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AE7838547E2789ED16AAD3EA /* ROMHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROMHeaderView.swift; sourceTree = "<group>"; };
+		AEE78BA3625BFED23E6C43D7 /* SpriteDrawingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingSession.swift; sourceTree = "<group>"; };
+		AF218070BDB2950D6059CE6E /* ROMAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROMAnalyzer.swift; sourceTree = "<group>"; };
+		B10CB586E6368266D34FF96E /* WorldGridCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGridCanvas.swift; sourceTree = "<group>"; };
+		B19E5D27E757E2D639BA2F7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B5BC17E5E62EA652B094CAA9 /* ParallaxPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxPreviewView.swift; sourceTree = "<group>"; };
+		B6E6F1E3EC25AF66B3DFC81C /* NewProjectSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectSheet.swift; sourceTree = "<group>"; };
+		BA0984834BA158B1227902A5 /* TileEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileEditorView.swift; sourceTree = "<group>"; };
+		BE04E63065FE84EBC7408A5B /* ProjectTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTemplate.swift; sourceTree = "<group>"; };
+		BE3AA425CE133986BE712695 /* LevelCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCanvas.swift; sourceTree = "<group>"; };
+		C30DE8103DFB589FBE829E66 /* CodeEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorCoordinator.swift; sourceTree = "<group>"; };
+		C9DE7E18E6DBAED848307A54 /* SpriteDrawingCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingCanvas.swift; sourceTree = "<group>"; };
+		CA5C00ABC65EE1B0A3D9B92F /* SNESStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SNESStudio.entitlements; sourceTree = "<group>"; };
+		CBC5A52F7638B397111606E2 /* SNESSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESSprite.swift; sourceTree = "<group>"; };
+		CDABEF27653A2373A2239417 /* SNESStudioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESStudioApp.swift; sourceTree = "<group>"; };
+		D15EDCC06F69EEBBCDE2B236 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		D535D81A1102E8566C5A461E /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		D718C5987278C0CE02F089B1 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
+		D8FC31217EBFAF84E24DAA0B /* VRAMBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRAMBudgetView.swift; sourceTree = "<group>"; };
+		DBE27D7D40BA028F391882DC /* ROMAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROMAnalyzerView.swift; sourceTree = "<group>"; };
+		DC085AF475FFF6CB419070EE /* ScreenPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenPropertiesView.swift; sourceTree = "<group>"; };
+		DD8868876A510A6722C7765B /* BGR555ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGR555ColorPicker.swift; sourceTree = "<group>"; };
+		E640F0BF1C2654FB49B9E000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E68120749C9EE54A282C058D /* ControllerEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerEditorView.swift; sourceTree = "<group>"; };
+		EB7371D13784CC0649734F82 /* PyramidLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidLevel.swift; sourceTree = "<group>"; };
+		EEC0D435B3FE6ED76591A7F8 /* AnthropicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicService.swift; sourceTree = "<group>"; };
+		F58447335AAD7CA70747E8C7 /* LevelEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEditorView.swift; sourceTree = "<group>"; };
+		F70B000299245CF1D13151D5 /* ROMTileExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ROMTileExplorerView.swift; sourceTree = "<group>"; };
+		F715429BFEE2CD540A22DB8E /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		F8E6C1BF62755018EC5B6CF2 /* VRAMViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRAMViewerView.swift; sourceTree = "<group>"; };
+		F97FBDD7D248F183258D2244 /* PaletteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditorView.swift; sourceTree = "<group>"; };
+		F9E318A21D3C820E02F053D0 /* PalettePresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePresets.swift; sourceTree = "<group>"; };
+		FAFE2CCD31B215FCE279EF39 /* SNESColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESColor.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		145018BCE17ADBD77CB65EF4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E68120749C9EE54A282C058D /* ControllerEditorView.swift */,
+				6C5B7927B27E4DEEBE4485B4 /* SNESControllerShape.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		187F2E5E172C05096C1ABEA9 /* Palette */ = {
+			isa = PBXGroup;
+			children = (
+				DD8868876A510A6722C7765B /* BGR555ColorPicker.swift */,
+				F97FBDD7D248F183258D2244 /* PaletteEditorView.swift */,
+			);
+			path = Palette;
+			sourceTree = "<group>";
+		};
+		249F6A005E62EF542E164697 /* Hardware */ = {
+			isa = PBXGroup;
+			children = (
+				9119F082E4AC00B1C5C9192E /* LayerViewerView.swift */,
+				1DA9449819A3CA86AD69C577 /* MemoryMapView.swift */,
+				2B1E9C0C182E7052D2A0023C /* RegistersView.swift */,
+				F8E6C1BF62755018EC5B6CF2 /* VRAMViewerView.swift */,
+			);
+			path = Hardware;
+			sourceTree = "<group>";
+		};
+		2C312BB7D6BC53EC8BDE1A34 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				EB7371D13784CC0649734F82 /* PyramidLevel.swift */,
+				24A99C221ADFBEC48F54F913 /* SNESTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		358BF47A26387A6C3226277C /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				0661F72F10858D4E57398422 /* CenterEditorView.swift */,
+				C30DE8103DFB589FBE829E66 /* CodeEditorCoordinator.swift */,
+				7B6446803BA02C5269BDF7DE /* CodeEditorView.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		37A13B7D05E3BBB6F8303D70 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				DC085AF475FFF6CB419070EE /* ScreenPropertiesView.swift */,
+				10877F1A1040C907415F9B74 /* TransitionEditorView.swift */,
+				D8FC31217EBFAF84E24DAA0B /* VRAMBudgetView.swift */,
+				2AEECDB6A76A4A3C00AA6D02 /* WorldEditorView.swift */,
+				B10CB586E6368266D34FF96E /* WorldGridCanvas.swift */,
+				2B30870AA0E09B9D9CBB9E34 /* ZoneListView.swift */,
+			);
+			path = World;
+			sourceTree = "<group>";
+		};
+		4576D2913252F40FCE3E6325 /* RightPanel */ = {
+			isa = PBXGroup;
+			children = (
+				3C909B03E43DA35440E76115 /* RightPanelView.swift */,
+			);
+			path = RightPanel;
+			sourceTree = "<group>";
+		};
+		4BF5F68B1535C164068D6E4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A7F20F8652B7F7BCD076C100 /* AppState.swift */,
+				7663F0B936E3EAF1135F53BC /* BGMode.swift */,
+				013245A2D4C82305377489A6 /* CartridgeConfig.swift */,
+				D535D81A1102E8566C5A461E /* ChatMessage.swift */,
+				330AF4C5676AD79E9FFDC7B1 /* ConsoleMessage.swift */,
+				0E648ED7316AF70EEB9B2AFD /* ControllerMapping.swift */,
+				A5171203538FEF4F47E46B55 /* EditorTab.swift */,
+				7C25845D631E6D5CDA86E94C /* HardwareBudget.swift */,
+				F9E318A21D3C820E02F053D0 /* PalettePresets.swift */,
+				2933E8A0C47FBCA6DE01B8AA /* ROMAnalysis.swift */,
+				8586821722B7CD1E1010209F /* SidebarItem.swift */,
+				FAFE2CCD31B215FCE279EF39 /* SNESColor.swift */,
+				11050BEA13D1EFDD01C5C381 /* SNESLevel.swift */,
+				76B8179A47D350111D9D5C8A /* SNESPalette.swift */,
+				A66F38C2C935BAB27E92062C /* SNESProject.swift */,
+				4FD60BBB60F81A81F96DD85C /* SNESRegister.swift */,
+				CBC5A52F7638B397111606E2 /* SNESSprite.swift */,
+				119C2FFF165D42570BD39BD3 /* SNESTile.swift */,
+				1137D81E0C38D6B5AE740E85 /* SNESTilemap.swift */,
+				AEE78BA3625BFED23E6C43D7 /* SpriteDrawingSession.swift */,
+				1072F4428ED35BBFDD257FBB /* VRAMLayout.swift */,
+				6B0F172D3FDC242CE8F55007 /* WorldData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		503B2F13677922522DEE1D05 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				4FE9E02D358993D61AAB5579 /* AnimationTimelineView.swift */,
+				7553D5368DD8AAE8567523BD /* SpriteCanvas.swift */,
+				67EAAC9748D244DDAF299DFE /* SpriteEditorView.swift */,
+				19824C64D13CD8D3DA2051F6 /* SpriteListView.swift */,
+				2A2DACA37A34737A7F382BB7 /* SpriteSheetImportView.swift */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		61910F0726EC53A4CE0BB37E /* ProjectWizard */ = {
+			isa = PBXGroup;
+			children = (
+				B6E6F1E3EC25AF66B3DFC81C /* NewProjectSheet.swift */,
+			);
+			path = ProjectWizard;
+			sourceTree = "<group>";
+		};
+		62C5503009B8B326FB5A6AC8 = {
+			isa = PBXGroup;
+			children = (
+				F58DD27610095E9EDC8CDF20 /* SNESStudio */,
+				DB0865634335A2EBFF523FBC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		639C3C8878E349813F1BC632 /* HardwareBar */ = {
+			isa = PBXGroup;
+			children = (
+				417BDA0925921BE2C1EDBEE9 /* HardwareBarView.swift */,
+			);
+			path = HardwareBar;
+			sourceTree = "<group>";
+		};
+		697EEEE1A71298245179212D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E640F0BF1C2654FB49B9E000 /* AppDelegate.swift */,
+				CDABEF27653A2373A2239417 /* SNESStudioApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		898C3953D1BD01ECBA572017 /* SpriteDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				C9DE7E18E6DBAED848307A54 /* SpriteDrawingCanvas.swift */,
+				7338D10BB1D1399ACDA3622F /* SpriteDrawingNSView.swift */,
+				1E68D3D8EF9CAB5E47DDA441 /* SpriteDrawingWindowView.swift */,
+			);
+			path = SpriteDrawing;
+			sourceTree = "<group>";
+		};
+		8DFA79431E30E4A0DE4F89EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FC80EB7822720CBB8ACC /* MainView.swift */,
+				9D54EFFDDFE320844A8C18D6 /* WelcomeView.swift */,
+				E2AE5A9F0077CF6ED1173A61 /* Cartridge */,
+				9005B0248C4B0A30E3454949 /* Chat */,
+				C0098B2B5A5220DA84E63E07 /* Console */,
+				145018BCE17ADBD77CB65EF4 /* Controller */,
+				358BF47A26387A6C3226277C /* Editor */,
+				249F6A005E62EF542E164697 /* Hardware */,
+				639C3C8878E349813F1BC632 /* HardwareBar */,
+				E0D7FBFD97E1834F95600FA3 /* Layout */,
+				EB58CBBDDE94B0E0BACDF654 /* Level */,
+				187F2E5E172C05096C1ABEA9 /* Palette */,
+				61910F0726EC53A4CE0BB37E /* ProjectWizard */,
+				4576D2913252F40FCE3E6325 /* RightPanel */,
+				D788FDA2D4E8518F8A97F190 /* ROMAnalyzer */,
+				C4483E8B8D9623301B846A34 /* Settings */,
+				503B2F13677922522DEE1D05 /* Sprite */,
+				898C3953D1BD01ECBA572017 /* SpriteDrawing */,
+				ED4E6C3A55CCE362E360F037 /* Tile */,
+				F790E13EE5A1FFBC32D34AFB /* Tilemap */,
+				9A06E1803A28DF3A0040A5ED /* Toolbar */,
+				37A13B7D05E3BBB6F8303D70 /* World */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9005B0248C4B0A30E3454949 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				00AA01F8EFF85519AF0F3D86 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		9A06E1803A28DF3A0040A5ED /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				F715429BFEE2CD540A22DB8E /* ToolbarView.swift */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		C0098B2B5A5220DA84E63E07 /* Console */ = {
+			isa = PBXGroup;
+			children = (
+				D718C5987278C0CE02F089B1 /* ConsoleView.swift */,
+			);
+			path = Console;
+			sourceTree = "<group>";
+		};
+		C4483E8B8D9623301B846A34 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				82B5207EADC3BC737DD7F041 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D788FDA2D4E8518F8A97F190 /* ROMAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				DBE27D7D40BA028F391882DC /* ROMAnalyzerView.swift */,
+				AE7838547E2789ED16AAD3EA /* ROMHeaderView.swift */,
+				766B2692270A59F14E9E6BA7 /* ROMPaletteExplorerView.swift */,
+				F70B000299245CF1D13151D5 /* ROMTileExplorerView.swift */,
+			);
+			path = ROMAnalyzer;
+			sourceTree = "<group>";
+		};
+		DB0865634335A2EBFF523FBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72ACD51FE79B2C05D47F71EF /* SNESStudio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB1C7B646AAA8BC6A37EA610 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				44D14154284F61CDAFBCDBE4 /* AIToolExecutor.swift */,
+				35187B1E4F3FE40332E1F003 /* AITools.swift */,
+				EEC0D435B3FE6ED76591A7F8 /* AnthropicService.swift */,
+				909F13C8684F88B2258EBD16 /* AssetStore.swift */,
+				3E8C86D92AC0E2D25CD159FB /* BGSnapshotRenderer.swift */,
+				50E643DC38CACEACB3B34D03 /* BuildSystem.swift */,
+				8CE0D463493276B04953DCDC /* ChatManager.swift */,
+				0EBF9119BFD7B4ADF3545679 /* EditorUndoManager.swift */,
+				D15EDCC06F69EEBBCDE2B236 /* KeychainHelper.swift */,
+				9F0C6FF036D3987AA0AC79DA /* LinkerConfigGenerator.swift */,
+				4E81DD3F173788F881C4CCF6 /* ProjectManager.swift */,
+				BE04E63065FE84EBC7408A5B /* ProjectTemplate.swift */,
+				AF218070BDB2950D6059CE6E /* ROMAnalyzer.swift */,
+				A4367320E42DAEC108223450 /* SpriteDecomposer.swift */,
+				A753BB3B34BBEFD1045F314E /* SpriteSheetImporter.swift */,
+				0015E15F9BCE997167E24FCB /* VRAMBudgetCalculator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E0D7FBFD97E1834F95600FA3 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				121D2A973A6474669961C382 /* LevelTabBar.swift */,
+				3428A6AE70E9E3ADA89FE603 /* ResizeHandle.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		E2AE5A9F0077CF6ED1173A61 /* Cartridge */ = {
+			isa = PBXGroup;
+			children = (
+				1BD0C0C5293E1D6F36ECE3C7 /* CartridgeConfigView.swift */,
+			);
+			path = Cartridge;
+			sourceTree = "<group>";
+		};
+		EB58CBBDDE94B0E0BACDF654 /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				BE3AA425CE133986BE712695 /* LevelCanvas.swift */,
+				F58447335AAD7CA70747E8C7 /* LevelEditorView.swift */,
+				9F54077FD95E40F44CBCDA7C /* LevelLayerPanel.swift */,
+				B5BC17E5E62EA652B094CAA9 /* ParallaxPreviewView.swift */,
+				81BEF033B4B0ECDB0E63CBD9 /* ScreenListView.swift */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
+		ED4E6C3A55CCE362E360F037 /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+				098ED858B6177F4917582E7B /* TileEditorCanvas.swift */,
+				BA0984834BA158B1227902A5 /* TileEditorView.swift */,
+				5836994B293771826319D08C /* TilesetBrowserView.swift */,
+			);
+			path = Tile;
+			sourceTree = "<group>";
+		};
+		F58DD27610095E9EDC8CDF20 /* SNESStudio */ = {
+			isa = PBXGroup;
+			children = (
+				B19E5D27E757E2D639BA2F7F /* Info.plist */,
+				CA5C00ABC65EE1B0A3D9B92F /* SNESStudio.entitlements */,
+				697EEEE1A71298245179212D /* App */,
+				4BF5F68B1535C164068D6E4F /* Models */,
+				DB1C7B646AAA8BC6A37EA610 /* Services */,
+				2C312BB7D6BC53EC8BDE1A34 /* Theme */,
+				8DFA79431E30E4A0DE4F89EF /* Views */,
+			);
+			path = SNESStudio;
+			sourceTree = "<group>";
+		};
+		F790E13EE5A1FFBC32D34AFB /* Tilemap */ = {
+			isa = PBXGroup;
+			children = (
+				481294DCEF2030893116A1B6 /* TilemapCanvas.swift */,
+				51A3F86C4C7DC955CBE78A3E /* TilemapEditorView.swift */,
+				860C0430C4B595C026E0C140 /* TilemapPropertiesView.swift */,
+			);
+			path = Tilemap;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0AF6AFAE3160D66DADDB6CF6 /* SNESStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4C0519FE45E908E74A5DDC9 /* Build configuration list for PBXNativeTarget "SNESStudio" */;
+			buildPhases = (
+				377DCC65CD28C099D71CC5F4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SNESStudio;
+			packageProductDependencies = (
+			);
+			productName = SNESStudio;
+			productReference = 72ACD51FE79B2C05D47F71EF /* SNESStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1656D9C64EF4E713ACAE6E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 96D7FB3CA807B0EBF692B5AF /* Build configuration list for PBXProject "SNESStudio" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 62C5503009B8B326FB5A6AC8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0AF6AFAE3160D66DADDB6CF6 /* SNESStudio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		377DCC65CD28C099D71CC5F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				885FBF68DB051E8E7CCD09C5 /* AIToolExecutor.swift in Sources */,
+				2045DBD577CFBEABC04271BE /* AITools.swift in Sources */,
+				AB14E0E97160085B2BF10A78 /* AnimationTimelineView.swift in Sources */,
+				36E1EF9B75A9B831361B1310 /* AnthropicService.swift in Sources */,
+				16734BA530D59C0527EAB987 /* AppDelegate.swift in Sources */,
+				338B8133B3ADD68EAD455AE3 /* AppState.swift in Sources */,
+				ED6733931C21ECBED4080534 /* AssetStore.swift in Sources */,
+				353DD29341522AFEF7D5352A /* BGMode.swift in Sources */,
+				507CC91CF6DFDDF4E79AF0F0 /* BGR555ColorPicker.swift in Sources */,
+				0B255B0A3DFA3CD8201DB6CD /* BGSnapshotRenderer.swift in Sources */,
+				C6829EF5496ECE399C8A0342 /* BuildSystem.swift in Sources */,
+				CF1E5BE28E469BE6054A0624 /* CartridgeConfig.swift in Sources */,
+				5EB7C192416A6F40F6D93495 /* CartridgeConfigView.swift in Sources */,
+				6563CDE87BAEDE31B1841928 /* CenterEditorView.swift in Sources */,
+				AC06C335208BFBC3C9114ECD /* ChatManager.swift in Sources */,
+				EF5DF1DC7921C33565DDAD41 /* ChatMessage.swift in Sources */,
+				617F1A673E4D3FC79F915E5B /* ChatView.swift in Sources */,
+				A6A286E0EC51E4848974F719 /* CodeEditorCoordinator.swift in Sources */,
+				5DE4E8B414E1B9667FD58D27 /* CodeEditorView.swift in Sources */,
+				7C68CD9410FBC5E647021B52 /* ConsoleMessage.swift in Sources */,
+				01BBD2395F2C473B738C7911 /* ConsoleView.swift in Sources */,
+				DEFF3CCFC54CD84E3001DFE0 /* ControllerEditorView.swift in Sources */,
+				86DE9536E10E738954709384 /* ControllerMapping.swift in Sources */,
+				DB47B1C0EBD076679EF111C8 /* EditorTab.swift in Sources */,
+				F3C7B3DD96AFE8F2947C2EA5 /* EditorUndoManager.swift in Sources */,
+				2FF3822F471534DA282B2D57 /* HardwareBarView.swift in Sources */,
+				147D01A73D62A27C3A6C90F1 /* HardwareBudget.swift in Sources */,
+				093E532F6DDA7703639EE8A2 /* KeychainHelper.swift in Sources */,
+				E1E0E02BBFA43C0FB08C63B7 /* LayerViewerView.swift in Sources */,
+				BF1F2F8742A5CE7D39BBD03C /* LevelCanvas.swift in Sources */,
+				667249CFE0461729AA638BE9 /* LevelEditorView.swift in Sources */,
+				567F87E69E97D74C8B7D201F /* LevelLayerPanel.swift in Sources */,
+				4058B4C87756CB0E02CC42F8 /* LevelTabBar.swift in Sources */,
+				DA2CA64904707BBBDD3693B6 /* LinkerConfigGenerator.swift in Sources */,
+				4A25F0990726061879EF3AB3 /* MainView.swift in Sources */,
+				90D4F0A269AC9DC72C6E6B29 /* MemoryMapView.swift in Sources */,
+				2F6E43AB5CD73AB33A61C530 /* NewProjectSheet.swift in Sources */,
+				CC0A5B1B7847642C89918B5F /* PaletteEditorView.swift in Sources */,
+				E472FCA4685D66956C863833 /* PalettePresets.swift in Sources */,
+				83377C9E5CEABD3F5AB6EF0A /* ParallaxPreviewView.swift in Sources */,
+				01CB07A2A45C3AA22A4C7BE8 /* ProjectManager.swift in Sources */,
+				0F07EAB03C9C1F2889E2C9E2 /* ProjectTemplate.swift in Sources */,
+				7DF287AFC67E036F769975B9 /* PyramidLevel.swift in Sources */,
+				1E7F856F8944017BC008F483 /* ROMAnalysis.swift in Sources */,
+				D7B9CD015CD6CE2D968E7FAF /* ROMAnalyzer.swift in Sources */,
+				C78F43B60CC24CC674377705 /* ROMAnalyzerView.swift in Sources */,
+				4D89A3BAA7D2DD468ED500CF /* ROMHeaderView.swift in Sources */,
+				CF80DCA74575B9BDBA521242 /* ROMPaletteExplorerView.swift in Sources */,
+				2135D23C375F3CEC2828E3BF /* ROMTileExplorerView.swift in Sources */,
+				4BE09D04B990A5F19E53D0DC /* RegistersView.swift in Sources */,
+				93AEC5B0DDB8EB9566EB2091 /* ResizeHandle.swift in Sources */,
+				200378F6F5BC8D99415C3AD4 /* RightPanelView.swift in Sources */,
+				7B46A1ED3269777A01ECA7AA /* SNESColor.swift in Sources */,
+				FFA9E0EFC195C634E2927F05 /* SNESControllerShape.swift in Sources */,
+				2F6C670E1C6930E1F36C4178 /* SNESLevel.swift in Sources */,
+				8B98D6C6BB63AAFE8CBB6598 /* SNESPalette.swift in Sources */,
+				CA76F4492B7A287693C70B57 /* SNESProject.swift in Sources */,
+				9C8D2CAF3352A3C5C2DBBD4E /* SNESRegister.swift in Sources */,
+				6819F5F7E85AE1265A8C0250 /* SNESSprite.swift in Sources */,
+				1B1FC6DED2910347984B44A3 /* SNESStudioApp.swift in Sources */,
+				BE20EF2CB88FDA092738420E /* SNESTheme.swift in Sources */,
+				4A50ECC994F4E5EECFE3D717 /* SNESTile.swift in Sources */,
+				93995D18854755A3F921341C /* SNESTilemap.swift in Sources */,
+				2F1A7DB7E9F122DA7D9D99FC /* ScreenListView.swift in Sources */,
+				CAF47D87D272F20E9C45A64B /* ScreenPropertiesView.swift in Sources */,
+				800778C90D65D6820A702D8E /* SettingsView.swift in Sources */,
+				B238D082B6C8F8F975B23082 /* SidebarItem.swift in Sources */,
+				50B671D5F023E8039B22C7CA /* SpriteCanvas.swift in Sources */,
+				3FE62467EF601B17541D6F0C /* SpriteDecomposer.swift in Sources */,
+				7A2608608E5F11B49166801C /* SpriteDrawingCanvas.swift in Sources */,
+				04C5BA0C43F2D207A9E6622C /* SpriteDrawingNSView.swift in Sources */,
+				D8B76C8A066D08D0B495B672 /* SpriteDrawingSession.swift in Sources */,
+				5F4B5B8F3F52FF51C4928C23 /* SpriteDrawingWindowView.swift in Sources */,
+				D5D0514D4C3DBC8A1D29A3E8 /* SpriteEditorView.swift in Sources */,
+				199A76ECD33F437EE38007DC /* SpriteListView.swift in Sources */,
+				B5F19A5E38A439D088B8A440 /* SpriteSheetImportView.swift in Sources */,
+				C2206D4AD8EABB3A946FCFC3 /* SpriteSheetImporter.swift in Sources */,
+				E234844BAAE12601F5D501E8 /* TileEditorCanvas.swift in Sources */,
+				517A675720C1C8B55E205AAB /* TileEditorView.swift in Sources */,
+				ED24136673FB216487762417 /* TilemapCanvas.swift in Sources */,
+				B0BEC335AB5413AEAF4DCA1B /* TilemapEditorView.swift in Sources */,
+				43FFC0CA2A9B921C851B9587 /* TilemapPropertiesView.swift in Sources */,
+				3AF370B913B750B5FBBABA6F /* TilesetBrowserView.swift in Sources */,
+				23E0FF0BC87DB10AA7B20C99 /* ToolbarView.swift in Sources */,
+				EA7051CCAF0107EA4F156976 /* TransitionEditorView.swift in Sources */,
+				F0AD3CBDAE1DDD7047436488 /* VRAMBudgetCalculator.swift in Sources */,
+				E69250CD2DABD3E90B874BAD /* VRAMBudgetView.swift in Sources */,
+				45A093285739D72AD33904D1 /* VRAMLayout.swift in Sources */,
+				3114628F1181911F36AE210F /* VRAMViewerView.swift in Sources */,
+				70AC5F4FCA26D5503209AEE9 /* WelcomeView.swift in Sources */,
+				331160642B7CFE1E73E4DCE6 /* WorldData.swift in Sources */,
+				771225545154ACE7B606299C /* WorldEditorView.swift in Sources */,
+				BEB4F839894BB594EE79FE8D /* WorldGridCanvas.swift in Sources */,
+				9AD3D5B4A443E02EC6632353 /* ZoneListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A27D40B9AB28927DD20E8A2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		A81C86A3DF916434205E30D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		B523A2BE822AD746F7908F05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SNESStudio/SNESStudio.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = SNESStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snesstudio.app;
+				PRODUCT_NAME = "SNES Studio";
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Release;
+		};
+		B56F0DB685AB695F64DFB61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SNESStudio/SNESStudio.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = SNESStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snesstudio.app;
+				PRODUCT_NAME = "SNES Studio";
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		96D7FB3CA807B0EBF692B5AF /* Build configuration list for PBXProject "SNESStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A81C86A3DF916434205E30D7 /* Debug */,
+				A27D40B9AB28927DD20E8A2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E4C0519FE45E908E74A5DDC9 /* Build configuration list for PBXNativeTarget "SNESStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B56F0DB685AB695F64DFB61B /* Debug */,
+				B523A2BE822AD746F7908F05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1656D9C64EF4E713ACAE6E4 /* Project object */;
+}
