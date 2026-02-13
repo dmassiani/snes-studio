@@ -104,36 +104,29 @@ jobs:
             -exportOptionsPlist build/ExportOptions.plist
 
       - name: Create DMG
-        env:
-          TAG_NAME: ${{ github.ref_name }}
         run: |
           mkdir -p build/dmg
           cp -R "build/export/SNES Studio.app" build/dmg/
           ln -s /Applications build/dmg/Applications
 
-          VERSION=${TAG_NAME#v}
           hdiutil create -volname "SNES Studio" \
             -srcfolder build/dmg \
             -ov -format UDZO \
-            "build/SNESStudio-${VERSION}.dmg"
+            "build/SNESStudio.dmg"
 
       - name: Notarize DMG
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          TAG_NAME: ${{ github.ref_name }}
         run: |
-          VERSION=${TAG_NAME#v}
-          DMG_PATH="build/SNESStudio-${VERSION}.dmg"
-
-          xcrun notarytool submit "$DMG_PATH" \
+          xcrun notarytool submit "build/SNESStudio.dmg" \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
             --wait
 
-          xcrun stapler staple "$DMG_PATH"
+          xcrun stapler staple "build/SNESStudio.dmg"
 
       - name: Upload to GitHub Release
         env:
@@ -141,9 +134,8 @@ jobs:
           TAG_NAME: ${{ github.ref_name }}
         run: |
           VERSION=${TAG_NAME#v}
-          DMG_PATH="build/SNESStudio-${VERSION}.dmg"
 
-          gh release create "$TAG_NAME" "$DMG_PATH" \
+          gh release create "$TAG_NAME" "build/SNESStudio.dmg" \
             --title "SNES Studio ${VERSION}" \
             --generate-notes
 
