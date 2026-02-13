@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -145,7 +145,7 @@
 		67EAAC9748D244DDAF299DFE /* SpriteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteEditorView.swift; sourceTree = "<group>"; };
 		6B0F172D3FDC242CE8F55007 /* WorldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldData.swift; sourceTree = "<group>"; };
 		6C5B7927B27E4DEEBE4485B4 /* SNESControllerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESControllerShape.swift; sourceTree = "<group>"; };
-		72ACD51FE79B2C05D47F71EF /* SNESStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNESStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72ACD51FE79B2C05D47F71EF /* SNES Studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SNES Studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7338D10BB1D1399ACDA3622F /* SpriteDrawingNSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingNSView.swift; sourceTree = "<group>"; };
 		7553D5368DD8AAE8567523BD /* SpriteCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteCanvas.swift; sourceTree = "<group>"; };
 		7663F0B936E3EAF1135F53BC /* BGMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMode.swift; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 		DB0865634335A2EBFF523FBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				72ACD51FE79B2C05D47F71EF /* SNESStudio.app */,
+				72ACD51FE79B2C05D47F71EF /* SNES Studio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 			packageProductDependencies = (
 			);
 			productName = SNESStudio;
-			productReference = 72ACD51FE79B2C05D47F71EF /* SNESStudio.app */;
+			productReference = 72ACD51FE79B2C05D47F71EF /* SNES Studio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -562,7 +562,6 @@
 			);
 			mainGroup = 62C5503009B8B326FB5A6AC8;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -801,8 +800,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SNESStudio/SNESStudio.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JD74ATC9J8;
 				INFOPLIST_FILE = SNESStudio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -811,6 +813,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.snesstudio.app;
 				PRODUCT_NAME = "SNES Studio";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_STRICT_CONCURRENCY = complete;
 			};
@@ -822,8 +825,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SNESStudio/SNESStudio.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JD74ATC9J8;
 				INFOPLIST_FILE = SNESStudio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -832,6 +838,7 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.snesstudio.app;
 				PRODUCT_NAME = "SNES Studio";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_STRICT_CONCURRENCY = complete;
 			};
