@@ -29,22 +29,22 @@ struct SNESStudioApp: App {
 
             // Pyramid levels: Cmd+1/2/3/4
             CommandGroup(after: .toolbar) {
-                Button("Hardware (Niveau 1)") {
+                Button("Hardware (Level 1)") {
                     NotificationCenter.default.post(name: .setLevel, object: PyramidLevel.hardware)
                 }
                 .keyboardShortcut("1", modifiers: [.command])
 
-                Button("Atelier (Niveau 2)") {
+                Button("Atelier (Level 2)") {
                     NotificationCenter.default.post(name: .setLevel, object: PyramidLevel.atelier)
                 }
                 .keyboardShortcut("2", modifiers: [.command])
 
-                Button("Orchestre (Niveau 3)") {
+                Button("Orchestre (Level 3)") {
                     NotificationCenter.default.post(name: .setLevel, object: PyramidLevel.orchestre)
                 }
                 .keyboardShortcut("3", modifiers: [.command])
 
-                Button("Logique (Niveau 4)") {
+                Button("Logique (Level 4)") {
                     NotificationCenter.default.post(name: .setLevel, object: PyramidLevel.logique)
                 }
                 .keyboardShortcut("4", modifiers: [.command])

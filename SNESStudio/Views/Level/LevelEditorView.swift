@@ -171,10 +171,10 @@ struct LevelEditorContainerView: View {
                     Image(systemName: "map")
                         .font(.system(size: 24))
                         .foregroundStyle(SNESTheme.textDisabled)
-                    Text("Aucune tilemap")
+                    Text("No tilemap")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textDisabled)
-                    Text("Creez des tilemaps dans\nl'editeur Tilemaps")
+                    Text("Create tilemaps in\nthe Tilemaps editor")
                         .font(.system(size: 10))
                         .foregroundStyle(SNESTheme.textDisabled.opacity(0.7))
                         .multilineTextAlignment(.center)
@@ -194,7 +194,7 @@ struct LevelEditorContainerView: View {
             }
 
             // Parallax section (fixed at bottom)
-            sectionHeader("PARALLAXE")
+            sectionHeader("PARALLAX")
             parallaxSection
         }
     }
@@ -218,7 +218,7 @@ struct LevelEditorContainerView: View {
     private var layerSizeHeader: some View {
         HStack(spacing: 6) {
             if activeLayerIndex < level.layers.count {
-                Text("Taille")
+                Text("Size")
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(SNESTheme.textSecondary)
                 Stepper("\(level.layers[activeLayerIndex].tilemap.width)",
@@ -285,7 +285,7 @@ struct LevelEditorContainerView: View {
                         .foregroundStyle(SNESTheme.textSecondary)
                 }
             } else {
-                Text("Aucune couche")
+                Text("No layers")
                     .font(.system(size: 10))
                     .foregroundStyle(SNESTheme.textDisabled)
             }
@@ -399,14 +399,14 @@ struct LevelEditorContainerView: View {
     private var levelToolbar: some View {
         HStack(spacing: 8) {
             // Tools
-            toolButton("square.grid.2x2", tool: .stamp, tooltip: "Placer tilemap")
-            toolButton("eraser", tool: .eraser, tooltip: "Effacer bloc")
+            toolButton("square.grid.2x2", tool: .stamp, tooltip: "Place tilemap")
+            toolButton("eraser", tool: .eraser, tooltip: "Erase block")
 
             Divider().frame(height: 16)
 
             // Screen name
             if let screenIdx = state.assetStore.worldScreens.firstIndex(where: { $0.id == screenID }) {
-                TextField("Nom", text: Binding(
+                TextField("Name", text: Binding(
                     get: { state.assetStore.worldScreens[screenIdx].name },
                     set: { newName in
                         state.assetStore.worldScreens[screenIdx].name = newName
@@ -446,7 +446,7 @@ struct LevelEditorContainerView: View {
                         .foregroundStyle(level.layers[activeLayerIndex].visible ? SNESTheme.textSecondary : SNESTheme.textDisabled)
                 }
                 .buttonStyle(.plain)
-                .help(level.layers[activeLayerIndex].visible ? "Masquer la couche" : "Afficher la couche")
+                .help(level.layers[activeLayerIndex].visible ? "Hide layer" : "Show layer")
             }
 
             Spacer()
@@ -460,7 +460,7 @@ struct LevelEditorContainerView: View {
                     .foregroundStyle(showPreviewPopover ? SNESTheme.info : SNESTheme.textSecondary)
             }
             .buttonStyle(.plain)
-            .help("Preview parallaxe")
+            .help("Preview parallax")
             .popover(isPresented: $showPreviewPopover, arrowEdge: .bottom) {
                 ParallaxPreviewView(
                     level: level,
@@ -501,7 +501,7 @@ struct LevelEditorContainerView: View {
                     .foregroundStyle(showGrid ? SNESTheme.info : SNESTheme.textDisabled)
             }
             .buttonStyle(.plain)
-            .help(showGrid ? "Masquer grille" : "Afficher grille")
+            .help(showGrid ? "Hide grid" : "Show grid")
 
             SNESTheme.border.frame(width: 1, height: 12)
 

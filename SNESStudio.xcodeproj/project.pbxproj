@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,6 +68,7 @@
 		9AD3D5B4A443E02EC6632353 /* ZoneListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B30870AA0E09B9D9CBB9E34 /* ZoneListView.swift */; };
 		9C8D2CAF3352A3C5C2DBBD4E /* SNESRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD60BBB60F81A81F96DD85C /* SNESRegister.swift */; };
 		A6A286E0EC51E4848974F719 /* CodeEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30DE8103DFB589FBE829E66 /* CodeEditorCoordinator.swift */; };
+		A9F55906F716F90A6D88A5D8 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84D368C5E776C594CD0453A4 /* index.html */; };
 		AB14E0E97160085B2BF10A78 /* AnimationTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9E02D358993D61AAB5579 /* AnimationTimelineView.swift */; };
 		AC06C335208BFBC3C9114ECD /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE0D463493276B04953DCDC /* ChatManager.swift */; };
 		B0BEC335AB5413AEAF4DCA1B /* TilemapEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A3F86C4C7DC955CBE78A3E /* TilemapEditorView.swift */; };
@@ -77,6 +78,8 @@
 		BEB4F839894BB594EE79FE8D /* WorldGridCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10CB586E6368266D34FF96E /* WorldGridCanvas.swift */; };
 		BF1F2F8742A5CE7D39BBD03C /* LevelCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3AA425CE133986BE712695 /* LevelCanvas.swift */; };
 		C2206D4AD8EABB3A946FCFC3 /* SpriteSheetImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A753BB3B34BBEFD1045F314E /* SpriteSheetImporter.swift */; };
+		C31D55A46001650EA5FECC3D /* editor.js in Resources */ = {isa = PBXBuildFile; fileRef = C7CB2C4B7A2D87FD2B389479 /* editor.js */; };
+		C480BAE8000CEE9F1E6E96DD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CE4422F118D90D55D44CB9A9 /* Localizable.xcstrings */; };
 		C6829EF5496ECE399C8A0342 /* BuildSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E643DC38CACEACB3B34D03 /* BuildSystem.swift */; };
 		C78F43B60CC24CC674377705 /* ROMAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE27D7D40BA028F391882DC /* ROMAnalyzerView.swift */; };
 		CA76F4492B7A287693C70B57 /* SNESProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66F38C2C935BAB27E92062C /* SNESProject.swift */; };
@@ -92,6 +95,7 @@
 		DEFF3CCFC54CD84E3001DFE0 /* ControllerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68120749C9EE54A282C058D /* ControllerEditorView.swift */; };
 		E1E0E02BBFA43C0FB08C63B7 /* LayerViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9119F082E4AC00B1C5C9192E /* LayerViewerView.swift */; };
 		E234844BAAE12601F5D501E8 /* TileEditorCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ED858B6177F4917582E7B /* TileEditorCanvas.swift */; };
+		E3340AB2771D0EEBEDD6488C /* theme.css in Resources */ = {isa = PBXBuildFile; fileRef = F9F37992E7A6BF981712BD09 /* theme.css */; };
 		E472FCA4685D66956C863833 /* PalettePresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E318A21D3C820E02F053D0 /* PalettePresets.swift */; };
 		E69250CD2DABD3E90B874BAD /* VRAMBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FC31217EBFAF84E24DAA0B /* VRAMBudgetView.swift */; };
 		EA7051CCAF0107EA4F156976 /* TransitionEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877F1A1040C907415F9B74 /* TransitionEditorView.swift */; };
@@ -100,6 +104,7 @@
 		EF5DF1DC7921C33565DDAD41 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535D81A1102E8566C5A461E /* ChatMessage.swift */; };
 		F0AD3CBDAE1DDD7047436488 /* VRAMBudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015E15F9BCE997167E24FCB /* VRAMBudgetCalculator.swift */; };
 		F3C7B3DD96AFE8F2947C2EA5 /* EditorUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF9119BFD7B4ADF3545679 /* EditorUndoManager.swift */; };
+		FB680B086F9D7E14EEB8670C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D5CED57F9989985FA54732B /* Assets.xcassets */; };
 		FFA9E0EFC195C634E2927F05 /* SNESControllerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5B7927B27E4DEEBE4485B4 /* SNESControllerShape.swift */; };
 /* End PBXBuildFile section */
 
@@ -145,7 +150,7 @@
 		67EAAC9748D244DDAF299DFE /* SpriteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteEditorView.swift; sourceTree = "<group>"; };
 		6B0F172D3FDC242CE8F55007 /* WorldData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldData.swift; sourceTree = "<group>"; };
 		6C5B7927B27E4DEEBE4485B4 /* SNESControllerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESControllerShape.swift; sourceTree = "<group>"; };
-		72ACD51FE79B2C05D47F71EF /* SNES Studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SNES Studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72ACD51FE79B2C05D47F71EF /* SNESStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNESStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7338D10BB1D1399ACDA3622F /* SpriteDrawingNSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingNSView.swift; sourceTree = "<group>"; };
 		7553D5368DD8AAE8567523BD /* SpriteCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteCanvas.swift; sourceTree = "<group>"; };
 		7663F0B936E3EAF1135F53BC /* BGMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMode.swift; sourceTree = "<group>"; };
@@ -153,8 +158,10 @@
 		76B8179A47D350111D9D5C8A /* SNESPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESPalette.swift; sourceTree = "<group>"; };
 		7B6446803BA02C5269BDF7DE /* CodeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorView.swift; sourceTree = "<group>"; };
 		7C25845D631E6D5CDA86E94C /* HardwareBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareBudget.swift; sourceTree = "<group>"; };
+		7D5CED57F9989985FA54732B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81BEF033B4B0ECDB0E63CBD9 /* ScreenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListView.swift; sourceTree = "<group>"; };
 		82B5207EADC3BC737DD7F041 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		84D368C5E776C594CD0453A4 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		8586821722B7CD1E1010209F /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		860C0430C4B595C026E0C140 /* TilemapPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilemapPropertiesView.swift; sourceTree = "<group>"; };
 		8CE0D463493276B04953DCDC /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
@@ -179,10 +186,12 @@
 		BE04E63065FE84EBC7408A5B /* ProjectTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTemplate.swift; sourceTree = "<group>"; };
 		BE3AA425CE133986BE712695 /* LevelCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCanvas.swift; sourceTree = "<group>"; };
 		C30DE8103DFB589FBE829E66 /* CodeEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorCoordinator.swift; sourceTree = "<group>"; };
+		C7CB2C4B7A2D87FD2B389479 /* editor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = editor.js; sourceTree = "<group>"; };
 		C9DE7E18E6DBAED848307A54 /* SpriteDrawingCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDrawingCanvas.swift; sourceTree = "<group>"; };
 		CA5C00ABC65EE1B0A3D9B92F /* SNESStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SNESStudio.entitlements; sourceTree = "<group>"; };
 		CBC5A52F7638B397111606E2 /* SNESSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESSprite.swift; sourceTree = "<group>"; };
 		CDABEF27653A2373A2239417 /* SNESStudioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESStudioApp.swift; sourceTree = "<group>"; };
+		CE4422F118D90D55D44CB9A9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D15EDCC06F69EEBBCDE2B236 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		D535D81A1102E8566C5A461E /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		D718C5987278C0CE02F089B1 /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
@@ -200,6 +209,7 @@
 		F8E6C1BF62755018EC5B6CF2 /* VRAMViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRAMViewerView.swift; sourceTree = "<group>"; };
 		F97FBDD7D248F183258D2244 /* PaletteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditorView.swift; sourceTree = "<group>"; };
 		F9E318A21D3C820E02F053D0 /* PalettePresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePresets.swift; sourceTree = "<group>"; };
+		F9F37992E7A6BF981712BD09 /* theme.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = theme.css; sourceTree = "<group>"; };
 		FAFE2CCD31B215FCE279EF39 /* SNESColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNESColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -347,6 +357,16 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		778F7F664E20BEA875AD3D6F /* CodeMirror */ = {
+			isa = PBXGroup;
+			children = (
+				C7CB2C4B7A2D87FD2B389479 /* editor.js */,
+				84D368C5E776C594CD0453A4 /* index.html */,
+				F9F37992E7A6BF981712BD09 /* theme.css */,
+			);
+			path = CodeMirror;
+			sourceTree = "<group>";
+		};
 		898C3953D1BD01ECBA572017 /* SpriteDrawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,7 +452,7 @@
 		DB0865634335A2EBFF523FBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				72ACD51FE79B2C05D47F71EF /* SNES Studio.app */,
+				72ACD51FE79B2C05D47F71EF /* SNESStudio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -499,6 +519,16 @@
 			path = Tile;
 			sourceTree = "<group>";
 		};
+		EED5B63D8FD7B27CD3C79DEB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7D5CED57F9989985FA54732B /* Assets.xcassets */,
+				CE4422F118D90D55D44CB9A9 /* Localizable.xcstrings */,
+				778F7F664E20BEA875AD3D6F /* CodeMirror */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F58DD27610095E9EDC8CDF20 /* SNESStudio */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,6 +536,7 @@
 				CA5C00ABC65EE1B0A3D9B92F /* SNESStudio.entitlements */,
 				697EEEE1A71298245179212D /* App */,
 				4BF5F68B1535C164068D6E4F /* Models */,
+				EED5B63D8FD7B27CD3C79DEB /* Resources */,
 				DB1C7B646AAA8BC6A37EA610 /* Services */,
 				2C312BB7D6BC53EC8BDE1A34 /* Theme */,
 				8DFA79431E30E4A0DE4F89EF /* Views */,
@@ -531,6 +562,7 @@
 			buildConfigurationList = E4C0519FE45E908E74A5DDC9 /* Build configuration list for PBXNativeTarget "SNESStudio" */;
 			buildPhases = (
 				377DCC65CD28C099D71CC5F4 /* Sources */,
+				05E2C1DCBBA8777EF9DE917E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -540,7 +572,7 @@
 			packageProductDependencies = (
 			);
 			productName = SNESStudio;
-			productReference = 72ACD51FE79B2C05D47F71EF /* SNES Studio.app */;
+			productReference = 72ACD51FE79B2C05D47F71EF /* SNESStudio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -551,6 +583,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					0AF6AFAE3160D66DADDB6CF6 = {
+						DevelopmentTeam = JD74ATC9J8;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 96D7FB3CA807B0EBF692B5AF /* Build configuration list for PBXProject "SNESStudio" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -562,6 +600,7 @@
 			);
 			mainGroup = 62C5503009B8B326FB5A6AC8;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -569,6 +608,21 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05E2C1DCBBA8777EF9DE917E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB680B086F9D7E14EEB8670C /* Assets.xcassets in Resources */,
+				C480BAE8000CEE9F1E6E96DD /* Localizable.xcstrings in Resources */,
+				C31D55A46001650EA5FECC3D /* editor.js in Resources */,
+				A9F55906F716F90A6D88A5D8 /* index.html in Resources */,
+				E3340AB2771D0EEBEDD6488C /* theme.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		377DCC65CD28C099D71CC5F4 /* Sources */ = {
@@ -813,8 +867,8 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.snesstudio.app;
 				PRODUCT_NAME = "SNES Studio";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
@@ -838,8 +892,8 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.snesstudio.app;
 				PRODUCT_NAME = "SNES Studio";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;

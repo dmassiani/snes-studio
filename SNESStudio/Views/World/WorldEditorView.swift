@@ -44,7 +44,7 @@ struct WorldEditorView: View {
                         Image(systemName: "map")
                             .font(.system(size: 32))
                             .foregroundStyle(SNESTheme.textDisabled)
-                        Text("Selectionnez ou creez une zone")
+                        Text("Select or create a zone")
                             .font(.system(size: 12))
                             .foregroundStyle(SNESTheme.textDisabled)
                     }
@@ -100,20 +100,20 @@ struct WorldEditorView: View {
 
             if selectedZone != nil {
                 Button(action: addScreen) {
-                    Label("Ecran", systemImage: "plus.rectangle")
+                    Label("Screen", systemImage: "plus.rectangle")
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.small)
 
                 Button(action: removeSelectedScreen) {
-                    Label("Supprimer", systemImage: "minus.rectangle")
+                    Label("Delete", systemImage: "minus.rectangle")
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.small)
                 .disabled(selectedScreenID == nil)
 
                 Button(action: editSelectedScreen) {
-                    Label("Editer", systemImage: "square.and.pencil")
+                    Label("Edit", systemImage: "square.and.pencil")
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.small)

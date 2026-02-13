@@ -69,11 +69,11 @@ final class BuildSystem {
     func build(project: SNESProject, console: AppState) async {
         guard !isBuilding else { return }
         guard let ca65 = ca65Path, let ld65 = ld65Path else {
-            console.appendConsole("ca65/ld65 non trouves. Installez cc65: brew install cc65", type: .error)
+            console.appendConsole("ca65/ld65 not found. Install cc65: brew install cc65", type: .error)
             return
         }
         guard let projectPath = project.projectPath else {
-            console.appendConsole("Chemin du projet non defini", type: .error)
+            console.appendConsole("Project path not defined", type: .error)
             return
         }
 

@@ -57,7 +57,7 @@ enum ROMSpeed: String, Codable, CaseIterable, Identifiable {
 // MARK: - Enhancement Chip
 
 enum EnhancementChip: String, Codable, CaseIterable, Identifiable {
-    case none     = "Aucun"
+    case none     = "None"
     case sa1      = "SA-1"
     case superFX  = "Super FX"
     case dsp1     = "DSP-1"
@@ -66,6 +66,19 @@ enum EnhancementChip: String, Codable, CaseIterable, Identifiable {
     case spc7110  = "SPC7110"
 
     var id: String { rawValue }
+
+    // Backward compatibility: accept old French raw value "Aucun" for .none
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let value = try container.decode(String.self)
+        if value == "Aucun" {
+            self = .none
+        } else if let chip = EnhancementChip(rawValue: value) {
+            self = chip
+        } else {
+            throw DecodingError.dataCorrupted(.init(codingPath: decoder.codingPath, debugDescription: "Unknown EnhancementChip: \(value)"))
+        }
+    }
 
     var headerByte: UInt8 {
         switch self {
@@ -81,13 +94,13 @@ enum EnhancementChip: String, Codable, CaseIterable, Identifiable {
 
     var description: String {
         switch self {
-        case .none:    return "Pas de co-processeur"
-        case .sa1:     return "65C816 @ 10.74 MHz — CPU parallele"
+        case .none:    return "No co-processor"
+        case .sa1:     return "65C816 @ 10.74 MHz — parallel CPU"
         case .superFX: return "GPU RISC 10.7 MHz — 3D, scaling"
-        case .dsp1:    return "Math hardware — trigo, projections"
-        case .cx4:     return "Math 3D @ 20 MHz — polygones"
-        case .sdd1:    return "Decompression hardware temps reel"
-        case .spc7110: return "Decompression + bankswitching avance"
+        case .dsp1:    return "Math hardware — trigonometry, projections"
+        case .cx4:     return "Math 3D @ 20 MHz — polygons"
+        case .sdd1:    return "Real-time decompression hardware"
+        case .spc7110: return "Decompression + advanced bankswitching"
         }
     }
 }
@@ -112,39 +125,39 @@ struct CartridgeProfile: Identifiable, Hashable {
 extension CartridgeProfile {
     static let presets: [CartridgeProfile] = [
         CartridgeProfile(
-            id: "simple", name: "Simple", description: "256 Ko LoROM — Demo, premier jeu",
+            id: "simple", name: "Simple", description: "256 KB LoROM — Demo, first game",
             romSizeKB: 256, mapping: .loROM, sramSizeKB: 0, chip: .none, speed: .slow, difficulty: 1
         ),
         CartridgeProfile(
-            id: "standard", name: "Standard", description: "512 Ko LoROM + 8 Ko SRAM",
+            id: "standard", name: "Standard", description: "512 KB LoROM + 8 KB SRAM",
             romSizeKB: 512, mapping: .loROM, sramSizeKB: 8, chip: .none, speed: .slow, difficulty: 2
         ),
         CartridgeProfile(
-            id: "extended", name: "Etendu", description: "1 Mo LoROM — Zelda-like, Metroid-like",
+            id: "extended", name: "Extended", description: "1 MB LoROM — Zelda-like, Metroid-like",
             romSizeKB: 1024, mapping: .loROM, sramSizeKB: 8, chip: .none, speed: .fast, difficulty: 2
         ),
         CartridgeProfile(
-            id: "large", name: "Grand", description: "2 Mo HiROM — RPG, aventure riche",
+            id: "large", name: "Large", description: "2 MB HiROM — RPG, rich adventure",
             romSizeKB: 2048, mapping: .hiROM, sramSizeKB: 32, chip: .none, speed: .fast, difficulty: 3
         ),
         CartridgeProfile(
-            id: "very_large", name: "Tres grand", description: "4 Mo ExHiROM — RPG ambitieux",
+            id: "very_large", name: "Very Large", description: "4 MB ExHiROM — ambitious RPG",
             romSizeKB: 4096, mapping: .exHiROM, sramSizeKB: 32, chip: .none, speed: .fast, difficulty: 3
         ),
         CartridgeProfile(
-            id: "sa1_boost", name: "SA-1 Boost", description: "4 Mo SA-1 — RPG complexe, action",
+            id: "sa1_boost", name: "SA-1 Boost", description: "4 MB SA-1 — complex RPG, action",
             romSizeKB: 4096, mapping: .sa1, sramSizeKB: 32, chip: .sa1, speed: .fast, difficulty: 4
         ),
         CartridgeProfile(
-            id: "super_fx", name: "Super FX", description: "1-2 Mo Super FX — 3D, effets speciaux",
+            id: "super_fx", name: "Super FX", description: "1-2 MB Super FX — 3D, special effects",
             romSizeKB: 1024, mapping: .loROM, sramSizeKB: 0, chip: .superFX, speed: .slow, difficulty: 5
         ),
         CartridgeProfile(
-            id: "dsp1_math", name: "DSP-1 Math", description: "1-2 Mo DSP-1 — Course, simulation",
+            id: "dsp1_math", name: "DSP-1 Math", description: "1-2 MB DSP-1 — Racing, simulation",
             romSizeKB: 1024, mapping: .loROM, sramSizeKB: 8, chip: .dsp1, speed: .slow, difficulty: 4
         ),
         CartridgeProfile(
-            id: "custom", name: "Custom", description: "Configuration libre, tous les parametres",
+            id: "custom", name: "Custom", description: "Free configuration, all parameters",
             romSizeKB: 512, mapping: .loROM, sramSizeKB: 0, chip: .none, speed: .slow, difficulty: 0
         ),
     ]

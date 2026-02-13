@@ -47,14 +47,14 @@ struct VRAMBudgetView: View {
 
     private var toolbar: some View {
         HStack(spacing: 12) {
-            Text("Budget VRAM")
+            Text("VRAM Budget")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(SNESTheme.textPrimary)
 
             Spacer()
 
-            Picker("Ecran", selection: $selectedScreenID) {
-                Text("Choisir un ecran").tag(UUID?.none)
+            Picker("Screen", selection: $selectedScreenID) {
+                Text("Choose a screen").tag(UUID?.none)
                 ForEach(state.assetStore.worldScreens) { s in
                     Text(s.name).tag(UUID?.some(s.id))
                 }
@@ -71,11 +71,11 @@ struct VRAMBudgetView: View {
     private var budgetOverview: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("VRAM: 64 Ko")
+                Text("VRAM: 64 KB")
                     .font(.system(size: 14, weight: .bold))
                     .foregroundStyle(SNESTheme.textPrimary)
                 Spacer()
-                Text(String(format: "%.1f%% utilise", budget.percentage))
+                Text(String(format: "%.1f%% used", budget.percentage))
                     .font(.system(size: 13, weight: .semibold, design: .monospaced))
                     .foregroundStyle(budget.isOverBudget ? SNESTheme.danger : SNESTheme.success)
             }
@@ -85,7 +85,7 @@ struct VRAMBudgetView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundStyle(SNESTheme.danger)
-                    Text("Depassement VRAM! Reduisez le nombre de tiles ou utilisez un mode BG avec moins de couleurs.")
+                    Text("VRAM exceeded! Reduce the number of tiles or use a BG mode with fewer colors.")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.danger)
                 }
@@ -115,8 +115,8 @@ struct VRAMBudgetView: View {
 
             // Stats
             HStack(spacing: 20) {
-                statBox("Utilise", formatBytes(budget.usedBytes), SNESTheme.textPrimary)
-                statBox("Libre", formatBytes(budget.freeBytes), SNESTheme.success)
+                statBox("Used", formatBytes(budget.usedBytes), SNESTheme.textPrimary)
+                statBox("Free", formatBytes(budget.freeBytes), SNESTheme.success)
                 statBox("Total", "65536 B", SNESTheme.textDisabled)
             }
         }
@@ -137,7 +137,7 @@ struct VRAMBudgetView: View {
 
     private var blockDetails: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Detail par categorie")
+            Text("Detail by category")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(SNESTheme.textSecondary)
 
@@ -171,7 +171,7 @@ struct VRAMBudgetView: View {
 
     private var exitCosts: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Couts de transition des sorties")
+            Text("Exit transition costs")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(SNESTheme.textSecondary)
 
@@ -200,7 +200,7 @@ struct VRAMBudgetView: View {
                     }
                 }
             } else {
-                Text("Aucune sortie configuree")
+                Text("No exits configured")
                     .font(.system(size: 11))
                     .foregroundStyle(SNESTheme.textDisabled)
             }
@@ -214,7 +214,7 @@ struct VRAMBudgetView: View {
             Image(systemName: "chart.bar")
                 .font(.system(size: 32))
                 .foregroundStyle(SNESTheme.textDisabled)
-            Text("Creez des zones et ecrans dans le World Manager pour voir le budget VRAM")
+            Text("Create zones and screens in the World Manager to view the VRAM budget")
                 .font(.system(size: 12))
                 .foregroundStyle(SNESTheme.textDisabled)
                 .multilineTextAlignment(.center)

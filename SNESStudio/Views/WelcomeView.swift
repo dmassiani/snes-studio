@@ -36,7 +36,7 @@ struct WelcomeView: View {
                             .font(.system(size: 28, weight: .bold))
                             .foregroundStyle(SNESTheme.textPrimary)
 
-                        Text("Developpez des jeux Super Nintendo")
+                        Text("Develop Super Nintendo games")
                             .font(.system(size: 14))
                             .foregroundStyle(SNESTheme.textSecondary)
                     }
@@ -45,7 +45,7 @@ struct WelcomeView: View {
                     HStack(spacing: 16) {
                         WelcomeButton(
                             icon: "plus",
-                            title: "Nouveau projet",
+                            title: "New Project",
                             color: SNESTheme.info
                         ) {
                             state.showNewProjectSheet = true
@@ -53,7 +53,7 @@ struct WelcomeView: View {
 
                         WelcomeButton(
                             icon: "folder",
-                            title: "Ouvrir projet",
+                            title: "Open Project",
                             color: SNESTheme.success
                         ) {
                             state.projectManager.openProjectPanel()
@@ -63,7 +63,7 @@ struct WelcomeView: View {
 
                     WelcomeButton(
                         icon: "magnifyingglass",
-                        title: "Analyser ROM",
+                        title: "Analyze ROM",
                         color: PyramidLevel.orchestre.accent,
                         isSecondary: true
                     ) {
@@ -71,7 +71,7 @@ struct WelcomeView: View {
                     }
 
                     // Keyboard hints
-                    Text("Cmd+N (nouveau) | Cmd+O (ouvrir)")
+                    Text("Cmd+N (new) | Cmd+O (open)")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textDisabled)
                         .padding(.top, 8)
@@ -90,7 +90,7 @@ struct WelcomeView: View {
     private var recentProjectsSidebar: some View {
         VStack(alignment: .leading, spacing: 0) {
             // Header
-            Text("PROJETS RECENTS")
+            Text("RECENT PROJECTS")
                 .font(.system(size: 10, weight: .semibold))
                 .tracking(0.5)
                 .foregroundStyle(SNESTheme.textDisabled)
@@ -99,7 +99,7 @@ struct WelcomeView: View {
                 .padding(.bottom, 10)
 
             if state.projectManager.recentProjects.isEmpty {
-                Text("Aucun projet recent")
+                Text("No recent projects")
                     .font(.system(size: 12))
                     .foregroundStyle(SNESTheme.textDisabled)
                     .padding(.horizontal, 16)
@@ -113,7 +113,7 @@ struct WelcomeView: View {
                                     state.projectManager.openProject(at: url)
                                     state.loadProject()
                                 } else {
-                                    state.appendConsole("Projet introuvable: \(url.lastPathComponent)", type: .warning)
+                                    state.appendConsole("Project not found: \(url.lastPathComponent)", type: .warning)
                                 }
                             }
                         }

@@ -19,10 +19,10 @@ enum PyramidLevel: Int, CaseIterable, Identifiable, Codable {
 
     var subtitle: String {
         switch self {
-        case .hardware: "Contraintes"
-        case .atelier:  "Ressources"
-        case .orchestre: "Orchestration"
-        case .logique:  "Code"
+        case .hardware: String(localized: "Constraints")
+        case .atelier:  String(localized: "Resources")
+        case .orchestre: String(localized: "Orchestration")
+        case .logique:  String(localized: "Code")
         }
     }
 

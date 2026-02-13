@@ -92,7 +92,7 @@ struct PaletteEditorView: View {
             }
             .menuStyle(.borderlessButton)
             .frame(width: 20)
-            .help("Charger un preset de jeu")
+            .help("Load a game preset")
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 8)

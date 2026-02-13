@@ -46,13 +46,13 @@ struct ToolbarView: View {
 
             Spacer()
 
-            // Right: Aide, IA, Search, Console toggle
+            // Right: Help, AI, Search, Console toggle
             HStack(spacing: 6) {
-                ToolbarToggle(icon: "questionmark.circle", label: "Aide",
+                ToolbarToggle(icon: "questionmark.circle", label: "Help",
                               isActive: state.isRightPanelVisible && state.rightPanelMode == .aide) {
                     state.toggleAide()
                 }
-                ToolbarToggle(icon: "bubble.left", label: "IA",
+                ToolbarToggle(icon: "bubble.left", label: "AI",
                               isActive: state.isRightPanelVisible && state.rightPanelMode == .chat) {
                     state.toggleChat()
                 }

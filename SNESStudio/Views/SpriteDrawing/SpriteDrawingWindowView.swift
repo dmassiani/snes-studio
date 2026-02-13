@@ -472,7 +472,7 @@ struct SpriteDrawingWindowView: View {
                     .toggleStyle(.checkbox)
                     .font(.system(size: 10))
                     .foregroundStyle(SNESTheme.textSecondary)
-                    .help("Animer aussi le canvas principal")
+                    .help("Also animate the main canvas")
 
                 Divider().frame(height: 20)
 

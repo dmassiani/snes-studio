@@ -14,11 +14,11 @@ struct SubTabBar: View {
                 ("tilemaps",   "Tilemaps",   "map"),
                 ("sprites",    "Sprites",    "figure.run"),
                 ("audio",      "Audio",      "music.note"),
-                ("controleur", "Controleur", "gamecontroller"),
+                ("controleur", "Controller", "gamecontroller"),
             ]
         case .orchestre:
             return [
-                ("niveaux", "Ecrans", "square.grid.3x3.fill"),
+                ("niveaux", "Screens", "square.grid.3x3.fill"),
             ]
         case .logique:
             return state.sourceFiles.map { file in
@@ -26,11 +26,11 @@ struct SubTabBar: View {
             }
         case .hardware:
             return [
-                ("cartouche",    "Cartouche",    "cpu"),
-                ("registres",    "Registres",    "list.clipboard"),
-                ("memoire",      "Memoire",      "memorychip"),
+                ("cartouche",    "Cartridge",    "cpu"),
+                ("registres",    "Registers",    "list.clipboard"),
+                ("memoire",      "Memory",       "memorychip"),
                 ("vram",         "VRAM",         "photo.artframe"),
-                ("couches_bg",   "Couches BG",   "square.3.layers.3d"),
+                ("couches_bg",   "BG Layers",    "square.3.layers.3d"),
                 ("rom_analyzer", "ROM Analyzer", "magnifyingglass"),
             ]
         }

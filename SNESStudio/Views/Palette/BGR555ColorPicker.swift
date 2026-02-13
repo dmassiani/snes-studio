@@ -56,8 +56,8 @@ struct BGR555ColorPicker: View {
                             .foregroundStyle(SNESTheme.textDisabled)
 
                         HStack(spacing: 4) {
-                            presetButton(.black, label: "Noir")
-                            presetButton(.white, label: "Blanc")
+                            presetButton(.black, label: "Black")
+                            presetButton(.white, label: "White")
                             presetButton(.red, label: "R")
                             presetButton(.green, label: "G")
                             presetButton(.blue, label: "B")

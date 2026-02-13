@@ -46,7 +46,7 @@ final class AIToolExecutor {
         case "add_zone":
             return addZone(id: id, input: input)
         default:
-            return ToolResult(toolID: id, content: "Outil inconnu: \(name)", isError: true)
+            return ToolResult(toolID: id, content: "Unknown tool: \(name)", isError: true)
         }
     }
 
@@ -54,7 +54,7 @@ final class AIToolExecutor {
 
     private func getProjectInfo(id: String) -> ToolResult {
         guard let project = appState.projectManager.currentProject else {
-            return ToolResult(toolID: id, content: "Aucun projet ouvert", isError: true)
+            return ToolResult(toolID: id, content: "No project open", isError: true)
         }
         var info: [String: Any] = [
             "name": project.name,
@@ -83,7 +83,7 @@ final class AIToolExecutor {
     private func getPalette(id: String, input: [String: Any]) -> ToolResult {
         guard let paletteIndex = input["palette_index"] as? Int,
               paletteIndex >= 0, paletteIndex < assetStore.palettes.count else {
-            return ToolResult(toolID: id, content: "palette_index invalide", isError: true)
+            return ToolResult(toolID: id, content: "Invalid palette_index", isError: true)
         }
         let palette = assetStore.palettes[paletteIndex]
         let colors = palette.colors.enumerated().map { (i, c) in
@@ -100,18 +100,18 @@ final class AIToolExecutor {
               let r = input["r"] as? Int,
               let g = input["g"] as? Int,
               let b = input["b"] as? Int else {
-            return ToolResult(toolID: id, content: "Parametres manquants: palette_index, color_index, r, g, b", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: palette_index, color_index, r, g, b", isError: true)
         }
         guard pi >= 0, pi < assetStore.palettes.count else {
-            return ToolResult(toolID: id, content: "palette_index hors limites (0-\(assetStore.palettes.count - 1))", isError: true)
+            return ToolResult(toolID: id, content: "palette_index out of bounds (0-\(assetStore.palettes.count - 1))", isError: true)
         }
         guard ci >= 0, ci < 16 else {
-            return ToolResult(toolID: id, content: "color_index hors limites (0-15)", isError: true)
+            return ToolResult(toolID: id, content: "color_index out of bounds (0-15)", isError: true)
         }
         let color = SNESColor(r: r, g: g, b: b)
         assetStore.palettes[pi][ci] = color
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "Couleur \(ci) de palette \(pi) mise a jour: R=\(color.red) G=\(color.green) B=\(color.blue)", isError: false)
+        return ToolResult(toolID: id, content: "Color \(ci) of palette \(pi) updated: R=\(color.red) G=\(color.green) B=\(color.blue)", isError: false)
     }
 
     // MARK: - Tile
@@ -121,26 +121,26 @@ final class AIToolExecutor {
               let x = input["x"] as? Int,
               let y = input["y"] as? Int,
               let ci = input["color_index"] as? Int else {
-            return ToolResult(toolID: id, content: "Parametres manquants", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters", isError: true)
         }
         guard ti >= 0, ti < assetStore.tiles.count else {
-            return ToolResult(toolID: id, content: "tile_index hors limites", isError: true)
+            return ToolResult(toolID: id, content: "tile_index out of bounds", isError: true)
         }
         guard x >= 0, x < 8, y >= 0, y < 8 else {
-            return ToolResult(toolID: id, content: "x/y hors limites (0-7)", isError: true)
+            return ToolResult(toolID: id, content: "x/y out of bounds (0-7)", isError: true)
         }
         assetStore.tiles[ti].setPixel(x: x, y: y, value: UInt8(ci))
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "Pixel (\(x),\(y)) du tile \(ti) = couleur \(ci)", isError: false)
+        return ToolResult(toolID: id, content: "Pixel (\(x),\(y)) of tile \(ti) = color \(ci)", isError: false)
     }
 
     private func setTilePixelsBatch(id: String, input: [String: Any]) -> ToolResult {
         guard let ti = input["tile_index"] as? Int,
               let pixels = input["pixels"] as? [[String: Any]] else {
-            return ToolResult(toolID: id, content: "Parametres manquants: tile_index, pixels", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: tile_index, pixels", isError: true)
         }
         guard ti >= 0, ti < assetStore.tiles.count else {
-            return ToolResult(toolID: id, content: "tile_index hors limites", isError: true)
+            return ToolResult(toolID: id, content: "tile_index out of bounds", isError: true)
         }
         var count = 0
         for px in pixels {
@@ -151,7 +151,7 @@ final class AIToolExecutor {
             count += 1
         }
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "\(count) pixels modifies dans tile \(ti)", isError: false)
+        return ToolResult(toolID: id, content: "\(count) pixels modified in tile \(ti)", isError: false)
     }
 
     // MARK: - Tilemap
@@ -160,10 +160,10 @@ final class AIToolExecutor {
         guard let x = input["x"] as? Int,
               let y = input["y"] as? Int,
               let tileIndex = input["tile_index"] as? Int else {
-            return ToolResult(toolID: id, content: "Parametres manquants: x, y, tile_index", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: x, y, tile_index", isError: true)
         }
         guard !assetStore.tilemaps.isEmpty else {
-            return ToolResult(toolID: id, content: "Aucune tilemap", isError: true)
+            return ToolResult(toolID: id, content: "No tilemap", isError: true)
         }
         let paletteIndex = input["palette_index"] as? Int ?? 0
         let flipH = input["flip_h"] as? Bool ?? false
@@ -181,7 +181,7 @@ final class AIToolExecutor {
         guard let x = input["x"] as? Int,
               let y = input["y"] as? Int,
               let tileIndex = input["tile_index"] as? Int else {
-            return ToolResult(toolID: id, content: "Parametres manquants: x, y, tile_index", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: x, y, tile_index", isError: true)
         }
         let paletteIndex = input["palette_index"] as? Int ?? 0
         let sizeStr = input["size"] as? String ?? "small8x8"
@@ -189,22 +189,22 @@ final class AIToolExecutor {
         let entry = OAMEntry(x: x, y: y, tileIndex: tileIndex, paletteIndex: paletteIndex, size: size)
         assetStore.spriteEntries.append(entry)
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "Sprite ajoute a (\(x),\(y)), tile \(tileIndex), taille \(size.label)", isError: false)
+        return ToolResult(toolID: id, content: "Sprite added at (\(x),\(y)), tile \(tileIndex), size \(size.label)", isError: false)
     }
 
     private func moveSprite(id: String, input: [String: Any]) -> ToolResult {
         guard let si = input["sprite_index"] as? Int,
               let x = input["x"] as? Int,
               let y = input["y"] as? Int else {
-            return ToolResult(toolID: id, content: "Parametres manquants: sprite_index, x, y", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: sprite_index, x, y", isError: true)
         }
         guard si >= 0, si < assetStore.spriteEntries.count else {
-            return ToolResult(toolID: id, content: "sprite_index hors limites", isError: true)
+            return ToolResult(toolID: id, content: "sprite_index out of bounds", isError: true)
         }
         assetStore.spriteEntries[si].x = x
         assetStore.spriteEntries[si].y = y
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "Sprite \(si) deplace a (\(x),\(y))", isError: false)
+        return ToolResult(toolID: id, content: "Sprite \(si) moved to (\(x),\(y))", isError: false)
     }
 
     // MARK: - Controller
@@ -213,14 +213,14 @@ final class AIToolExecutor {
         guard let buttonStr = input["button"] as? String,
               let label = input["label"] as? String,
               let routine = input["asm_routine"] as? String else {
-            return ToolResult(toolID: id, content: "Parametres manquants: button, label, asm_routine", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: button, label, asm_routine", isError: true)
         }
         guard let button = SNESButton(rawValue: buttonStr) else {
-            return ToolResult(toolID: id, content: "Bouton inconnu: \(buttonStr)", isError: true)
+            return ToolResult(toolID: id, content: "Unknown button: \(buttonStr)", isError: true)
         }
         assetStore.controllerMapping[button] = ButtonAction(label: label, asmRoutine: routine)
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "Bouton \(button.label) → \(label) (\(routine))", isError: false)
+        return ToolResult(toolID: id, content: "Button \(button.label) → \(label) (\(routine))", isError: false)
     }
 
     // MARK: - Code
@@ -228,16 +228,16 @@ final class AIToolExecutor {
     private func insertCode(id: String, input: [String: Any]) -> ToolResult {
         guard let line = input["line"] as? Int,
               let code = input["code"] as? String else {
-            return ToolResult(toolID: id, content: "Parametres manquants: line, code", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: line, code", isError: true)
         }
         guard let tab = appState.tabManager.activeTab,
               let project = appState.projectManager.currentProject,
               let srcDir = project.sourceDirectoryURL else {
-            return ToolResult(toolID: id, content: "Aucun fichier actif", isError: true)
+            return ToolResult(toolID: id, content: "No active file", isError: true)
         }
         let fileURL = srcDir.appendingPathComponent(tab.title)
         guard var content = try? String(contentsOf: fileURL, encoding: .utf8) else {
-            return ToolResult(toolID: id, content: "Impossible de lire le fichier", isError: true)
+            return ToolResult(toolID: id, content: "Unable to read file", isError: true)
         }
         var lines = content.components(separatedBy: "\n")
         let insertAt = max(0, min(line - 1, lines.count))
@@ -247,9 +247,9 @@ final class AIToolExecutor {
         do {
             try content.write(to: fileURL, atomically: true, encoding: .utf8)
             NotificationCenter.default.post(name: .codeFileDidChange, object: nil, userInfo: ["file": tab.title])
-            return ToolResult(toolID: id, content: "\(codeLines.count) lignes inserees a la ligne \(line)", isError: false)
+            return ToolResult(toolID: id, content: "\(codeLines.count) lines inserted at line \(line)", isError: false)
         } catch {
-            return ToolResult(toolID: id, content: "Erreur ecriture: \(error.localizedDescription)", isError: true)
+            return ToolResult(toolID: id, content: "Write error: \(error.localizedDescription)", isError: true)
         }
     }
 
@@ -257,22 +257,22 @@ final class AIToolExecutor {
         guard let startLine = input["start_line"] as? Int,
               let endLine = input["end_line"] as? Int,
               let code = input["code"] as? String else {
-            return ToolResult(toolID: id, content: "Parametres manquants: start_line, end_line, code", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters: start_line, end_line, code", isError: true)
         }
         guard let tab = appState.tabManager.activeTab,
               let project = appState.projectManager.currentProject,
               let srcDir = project.sourceDirectoryURL else {
-            return ToolResult(toolID: id, content: "Aucun fichier actif", isError: true)
+            return ToolResult(toolID: id, content: "No active file", isError: true)
         }
         let fileURL = srcDir.appendingPathComponent(tab.title)
         guard var content = try? String(contentsOf: fileURL, encoding: .utf8) else {
-            return ToolResult(toolID: id, content: "Impossible de lire le fichier", isError: true)
+            return ToolResult(toolID: id, content: "Unable to read file", isError: true)
         }
         var lines = content.components(separatedBy: "\n")
         let start = max(0, startLine - 1)
         let end = min(endLine, lines.count)
         guard start < end else {
-            return ToolResult(toolID: id, content: "Plage de lignes invalide", isError: true)
+            return ToolResult(toolID: id, content: "Invalid line range", isError: true)
         }
         let codeLines = code.components(separatedBy: "\n")
         lines.replaceSubrange(start..<end, with: codeLines)
@@ -280,9 +280,9 @@ final class AIToolExecutor {
         do {
             try content.write(to: fileURL, atomically: true, encoding: .utf8)
             NotificationCenter.default.post(name: .codeFileDidChange, object: nil, userInfo: ["file": tab.title])
-            return ToolResult(toolID: id, content: "Lignes \(startLine)-\(endLine) remplacees par \(codeLines.count) lignes", isError: false)
+            return ToolResult(toolID: id, content: "Lines \(startLine)-\(endLine) replaced with \(codeLines.count) lines", isError: false)
         } catch {
-            return ToolResult(toolID: id, content: "Erreur ecriture: \(error.localizedDescription)", isError: true)
+            return ToolResult(toolID: id, content: "Write error: \(error.localizedDescription)", isError: true)
         }
     }
 
@@ -294,7 +294,7 @@ final class AIToolExecutor {
               let bgMode = input["bg_mode"] as? Int,
               let gridW = input["grid_width"] as? Int,
               let gridH = input["grid_height"] as? Int else {
-            return ToolResult(toolID: id, content: "Parametres manquants", isError: true)
+            return ToolResult(toolID: id, content: "Missing parameters", isError: true)
         }
         let zoneType = ZoneType(rawValue: typeStr) ?? .overworld
         let zone = WorldZone(name: name, type: zoneType, bgMode: bgMode,
@@ -302,7 +302,7 @@ final class AIToolExecutor {
                              sharedTileIndices: [], colorHex: "9B6DFF")
         assetStore.worldZones.append(zone)
         notifyAssetChange()
-        return ToolResult(toolID: id, content: "Zone '\(name)' ajoutee (\(zoneType.rawValue), mode \(bgMode), \(gridW)x\(gridH))", isError: false)
+        return ToolResult(toolID: id, content: "Zone '\(name)' added (\(zoneType.rawValue), mode \(bgMode), \(gridW)x\(gridH))", isError: false)
     }
 
     // MARK: - Notifications

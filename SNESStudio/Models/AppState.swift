@@ -145,15 +145,15 @@ final class AppState {
                let screen = assetStore.worldScreens.first(where: { $0.id == uuid }) {
                 return screen.name
             }
-            return "Ecran"
+            return String(localized: "Screen")
         }
         // Static sub-tab names
         let labels: [String: String] = [
-            "palettes": "Palettes", "tiles": "Tiles", "tilemaps": "Tilemaps",
-            "sprites": "Sprites", "audio": "Audio", "controleur": "Controleur",
-            "niveaux": "Ecrans",
-            "cartouche": "Cartouche", "registres": "Registres", "memoire": "Memoire",
-            "vram": "VRAM", "couches_bg": "Couches BG", "rom_analyzer": "ROM Analyzer",
+            "palettes": String(localized: "Palettes"), "tiles": String(localized: "Tiles"), "tilemaps": String(localized: "Tilemaps"),
+            "sprites": String(localized: "Sprites"), "audio": String(localized: "Audio"), "controleur": String(localized: "Controller"),
+            "niveaux": String(localized: "Screens"),
+            "cartouche": String(localized: "Cartridge"), "registres": String(localized: "Registers"), "memoire": String(localized: "Memory"),
+            "vram": String(localized: "VRAM"), "couches_bg": String(localized: "BG Layers"), "rom_analyzer": String(localized: "ROM Analyzer"),
         ]
         return labels[id] ?? id
     }
@@ -191,14 +191,14 @@ final class AppState {
             return
         }
         guard let assetsDir = project.assetsDirectoryURL else {
-            appendConsole("Auto-save: pas de dossier assets", type: .warning)
+            appendConsole(String(localized: "Auto-save: no assets folder"), type: .warning)
             return
         }
         do {
             try assetStore.save(to: assetsDir)
             try projectManager.saveProject()
         } catch {
-            appendConsole("Auto-save erreur: \(error.localizedDescription)", type: .error)
+            appendConsole(String(localized: "Auto-save error: \(error.localizedDescription)"), type: .error)
         }
     }
 
@@ -217,25 +217,25 @@ final class AppState {
         if let assetsDir = project.assetsDirectoryURL {
             let result = assetStore.load(from: assetsDir)
             if !result.directoryExists {
-                appendConsole("Dossier assets/ introuvable — \(assetsDir.path)", type: .warning)
+                appendConsole(String(localized: "assets/ folder not found — \(assetsDir.path)"), type: .warning)
             } else if !result.loaded.isEmpty {
-                appendConsole("Assets charges: \(result.loaded.joined(separator: ", "))", type: .info)
+                appendConsole(String(localized: "Assets loaded: \(result.loaded.joined(separator: ", "))"), type: .info)
             }
             if !result.missing.isEmpty {
-                appendConsole("Fichiers absents (defauts): \(result.missing.joined(separator: ", "))", type: .info)
+                appendConsole(String(localized: "Missing files (defaults): \(result.missing.joined(separator: ", "))"), type: .info)
             }
             for (file, err) in result.errors {
-                appendConsole("Erreur \(file): \(err)", type: .error)
+                appendConsole(String(localized: "Error \(file): \(err)"), type: .error)
             }
             // New project: save defaults so files exist for next load
             if result.loaded.isEmpty && result.errors.isEmpty {
                 performAutoSave()
             }
         } else {
-            appendConsole("Pas de chemin assets configure", type: .warning)
+            appendConsole(String(localized: "No assets path configured"), type: .warning)
         }
         recalculateBudget()
-        appendConsole("Projet \"\(project.name)\" charge — \(project.projectPath?.path ?? "?")", type: .success)
+        appendConsole(String(localized: "Project \"\(project.name)\" loaded — \(project.projectPath?.path ?? "?")"), type: .success)
     }
 
     func recalculateBudget() {
@@ -253,9 +253,9 @@ final class AppState {
                 try assetStore.save(to: assetsDir)
             }
             recalculateBudget()
-            appendConsole("Projet sauvegarde", type: .success)
+            appendConsole(String(localized: "Project saved"), type: .success)
         } catch {
-            appendConsole("Erreur sauvegarde: \(error.localizedDescription)", type: .error)
+            appendConsole(String(localized: "Save error: \(error.localizedDescription)"), type: .error)
         }
     }
 
@@ -264,7 +264,7 @@ final class AppState {
             activeLevel = .logique
             activeSubTabID[.logique] = file
         } else {
-            appendConsole("Fichier \(file) introuvable dans le projet", type: .warning)
+            appendConsole(String(localized: "File \(file) not found in project"), type: .warning)
             return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -278,7 +278,7 @@ final class AppState {
 
     func buildProject() async {
         guard let project = projectManager.currentProject else {
-            appendConsole("Aucun projet ouvert", type: .error)
+            appendConsole(String(localized: "No project open"), type: .error)
             return
         }
         await buildSystem.build(project: project, console: self)

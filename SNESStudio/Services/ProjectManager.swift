@@ -68,7 +68,7 @@ final class ProjectManager {
 
     func openProjectPanel() {
         let panel = NSOpenPanel()
-        panel.title = "Ouvrir un projet SNES Studio"
+        panel.title = "Open a SNES Studio project"
         panel.allowedContentTypes = [UTType(filenameExtension: "snesproj") ?? .data]
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
@@ -104,7 +104,7 @@ final class ProjectManager {
             addRecent(url)
             error = nil
         } catch {
-            self.error = "Erreur ouverture: \(error.localizedDescription)"
+            self.error = "Open error: \(error.localizedDescription)"
         }
     }
 

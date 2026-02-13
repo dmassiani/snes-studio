@@ -29,11 +29,11 @@ struct ChatView: View {
                 .font(.system(size: 32))
                 .foregroundStyle(SNESTheme.textDisabled)
 
-            Text("Assistant SNES")
+            Text("SNES Assistant")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(SNESTheme.textSecondary)
 
-            Text("Pose une question sur le 65816,\nles registres PPU, ca65/ld65...\nL'IA peut aussi modifier tes assets!")
+            Text("Ask about the 65816,\nPPU registers, ca65/ld65...\nThe AI can also modify your assets!")
                 .font(.system(size: 11))
                 .foregroundStyle(SNESTheme.textDisabled)
                 .multilineTextAlignment(.center)
@@ -42,7 +42,7 @@ struct ChatView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .font(.system(size: 10))
-                    Text("ANTHROPIC_API_KEY non definie")
+                    Text("ANTHROPIC_API_KEY not set")
                         .font(.system(size: 10, weight: .medium))
                 }
                 .foregroundStyle(SNESTheme.warning)
@@ -170,7 +170,7 @@ struct ChatView: View {
 
             case .tilemap:
                 if let tm = state.assetStore.tilemaps.first {
-                    ctx.editorSummary = "Tilemap '\(tm.name)' \(tm.width)x\(tm.height) tiles, \(state.assetStore.tiles.count) tiles disponibles"
+                    ctx.editorSummary = "Tilemap '\(tm.name)' \(tm.width)x\(tm.height) tiles, \(state.assetStore.tiles.count) tiles available"
                 }
 
             case .sprite:
@@ -179,10 +179,10 @@ struct ChatView: View {
 
             case .controller:
                 let assigned = SNESButton.allCases.filter { !state.assetStore.controllerMapping[$0].asmRoutine.isEmpty }
-                ctx.editorSummary = "\(assigned.count)/12 boutons assignes: \(assigned.map { $0.label }.joined(separator: ", "))"
+                ctx.editorSummary = "\(assigned.count)/12 buttons assigned: \(assigned.map { $0.label }.joined(separator: ", "))"
 
             case .world:
-                ctx.editorSummary = "\(state.assetStore.worldZones.count) zones, \(state.assetStore.worldScreens.count) ecrans, \(state.assetStore.worldTransitions.count) transitions"
+                ctx.editorSummary = "\(state.assetStore.worldZones.count) zones, \(state.assetStore.worldScreens.count) screens, \(state.assetStore.worldTransitions.count) transitions"
 
             default:
                 break

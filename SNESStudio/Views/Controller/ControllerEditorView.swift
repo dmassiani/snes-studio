@@ -294,7 +294,7 @@ struct ControllerEditorView: View {
     private func generateInputASM() {
         guard let project = state.projectManager.currentProject,
               let srcDir = project.sourceDirectoryURL else {
-            state.appendConsole("Aucun projet ouvert", type: .error)
+            state.appendConsole(String(localized: "No project open"), type: .error)
             return
         }
 
@@ -302,9 +302,9 @@ struct ControllerEditorView: View {
         let fileURL = srcDir.appendingPathComponent("input.asm")
         do {
             try code.write(to: fileURL, atomically: true, encoding: .utf8)
-            state.appendConsole("input.asm genere (\(code.count) octets)", type: .success)
+            state.appendConsole(String(localized: "input.asm generated (\(code.count) bytes)"), type: .success)
         } catch {
-            state.appendConsole("Erreur: \(error.localizedDescription)", type: .error)
+            state.appendConsole(String(localized: "Error: \(error.localizedDescription)"), type: .error)
         }
     }
 }

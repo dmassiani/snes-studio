@@ -14,7 +14,7 @@ final class ROMAnalyzer {
         result = nil
 
         guard let data = try? Data(contentsOf: url) else {
-            errorMessage = "Impossible de lire le fichier"
+            errorMessage = String(localized: "Unable to read file")
             isAnalyzing = false
             return
         }
@@ -30,7 +30,7 @@ final class ROMAnalyzer {
         }
 
         guard let header = parseHeader(romData) else {
-            errorMessage = "Header SNES invalide"
+            errorMessage = String(localized: "Invalid SNES header")
             isAnalyzing = false
             return
         }

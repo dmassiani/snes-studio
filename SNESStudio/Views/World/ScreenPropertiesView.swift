@@ -9,10 +9,10 @@ struct ScreenPropertiesView: View {
             VStack(alignment: .leading, spacing: 16) {
                 // Name
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Nom")
+                    Text("Name")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    TextField("Nom", text: $screen.name)
+                    TextField("Name", text: $screen.name)
                         .textFieldStyle(.roundedBorder)
                         .font(.system(size: 12))
                 }
@@ -40,7 +40,7 @@ struct ScreenPropertiesView: View {
                     Text("Layers")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    Text("\(screen.layers.count) couche(s)")
+                    Text("\(screen.layers.count) layer(s)")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textPrimary)
                     ForEach(screen.layers) { layer in
@@ -79,7 +79,7 @@ struct ScreenPropertiesView: View {
     private var entitiesSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("Entites (\(screen.entities.count))")
+                Text("Entities (\(screen.entities.count))")
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(SNESTheme.textSecondary)
                 Spacer()
@@ -119,7 +119,7 @@ struct ScreenPropertiesView: View {
     private var exitsSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("Sorties (\(screen.exits.count))")
+                Text("Exits (\(screen.exits.count))")
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(SNESTheme.textSecondary)
                 Spacer()

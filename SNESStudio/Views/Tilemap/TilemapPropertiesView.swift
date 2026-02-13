@@ -15,7 +15,7 @@ struct TilemapPropertiesView: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Text("CELLULE (\(cellX), \(cellY))")
+                Text("CELL (\(cellX), \(cellY))")
                     .font(.system(size: 10, weight: .semibold))
                     .tracking(0.5)
                     .foregroundStyle(SNESTheme.textSecondary)
@@ -31,7 +31,7 @@ struct TilemapPropertiesView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Explanation
-                    Text("Chaque case de la tilemap reference une tile et une palette du projet.")
+                    Text("Each tilemap cell references a tile and a palette from the project.")
                         .font(.system(size: 10))
                         .foregroundStyle(SNESTheme.textDisabled)
                         .fixedSize(horizontal: false, vertical: true)
@@ -72,7 +72,7 @@ struct TilemapPropertiesView: View {
                         .frame(width: 60)
                     }
 
-                    descriptionText("Quel motif 8\u{00D7}8 afficher (depuis le tileset)")
+                    descriptionText("Which 8\u{00D7}8 pattern to display (from the tileset)")
 
                     // MARK: - Palette
                     sectionLabel("PALETTE")
@@ -122,12 +122,12 @@ struct TilemapPropertiesView: View {
                         )
                     }
 
-                    descriptionText("Quelle palette de couleurs appliquer a cette tile")
+                    descriptionText("Which color palette to apply to this tile")
 
                     // MARK: - Transformations
-                    sectionLabel("TRANSFORMATION")
+                    sectionLabel("TRANSFORM")
 
-                    Toggle("Miroir horizontal", isOn: Binding(
+                    Toggle("Horizontal flip", isOn: Binding(
                         get: { entry.flipH },
                         set: { newVal in
                             var e = entry
@@ -138,7 +138,7 @@ struct TilemapPropertiesView: View {
                     .font(.system(size: 11))
                     .foregroundStyle(SNESTheme.textSecondary)
 
-                    Toggle("Miroir vertical", isOn: Binding(
+                    Toggle("Vertical flip", isOn: Binding(
                         get: { entry.flipV },
                         set: { newVal in
                             var e = entry
@@ -149,12 +149,12 @@ struct TilemapPropertiesView: View {
                     .font(.system(size: 11))
                     .foregroundStyle(SNESTheme.textSecondary)
 
-                    descriptionText("Retourne la tile sans utiliser une tile supplementaire en VRAM")
+                    descriptionText("Flips the tile without using an extra tile in VRAM")
 
                     // MARK: - Priority
-                    sectionLabel("PRIORITE")
+                    sectionLabel("PRIORITY")
 
-                    Toggle("Priorite haute", isOn: Binding(
+                    Toggle("High priority", isOn: Binding(
                         get: { entry.priority },
                         set: { newVal in
                             var e = entry
@@ -165,7 +165,7 @@ struct TilemapPropertiesView: View {
                     .font(.system(size: 11))
                     .foregroundStyle(SNESTheme.textSecondary)
 
-                    descriptionText("Afficher devant ou derriere les sprites")
+                    descriptionText("Display in front of or behind sprites")
                 }
                 .padding(12)
             }

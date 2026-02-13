@@ -251,51 +251,51 @@ final class ChatManager {
         var parts: [String] = []
 
         parts.append("""
-        Tu es un assistant expert en developpement SNES (Super Nintendo). \
-        Tu maitrises parfaitement le processeur 65816 (WDC 65C816), l'assembleur ca65/ld65, \
-        l'architecture du PPU (modes graphiques 0-7), le SPC-700 (audio), les DMA, \
-        et toutes les subtilites du hardware SNES. \
-        Tu reponds en francais, de maniere concise et technique. \
-        Quand tu donnes du code, utilise la syntaxe ca65.
+        You are an expert assistant in SNES (Super Nintendo) development. \
+        You have deep knowledge of the 65816 processor (WDC 65C816), the ca65/ld65 assembler, \
+        the PPU architecture (graphics modes 0-7), the SPC-700 (audio), DMA, \
+        and all the subtleties of SNES hardware. \
+        You answer concisely and technically. \
+        When providing code, use ca65 syntax.
         """)
 
         // Tool use instructions
         if context.activeEditor != .none {
             parts.append("""
-            Tu as acces a des outils pour modifier directement les assets du projet. \
-            Utilise-les quand l'utilisateur te demande de faire des modifications visuelles. \
-            Ne demande pas de confirmation, execute directement les outils.
+            You have access to tools to directly modify the project assets. \
+            Use them when the user asks you to make visual modifications. \
+            Do not ask for confirmation, execute the tools directly.
             """)
         }
 
         if let config = context.cartridgeConfig {
             parts.append("""
-            Cartouche du projet: \(config.mapping.rawValue), \
-            \(config.romSizeKB) Ko ROM, \(config.sramSizeKB) Ko SRAM, \
+            Project cartridge: \(config.mapping.rawValue), \
+            \(config.romSizeKB) KB ROM, \(config.sramSizeKB) KB SRAM, \
             \(config.speed.rawValue), chip: \(config.chip.rawValue)
             """)
         }
 
         // Active editor context
         if context.activeEditor != .none {
-            parts.append("Editeur actif: \(context.activeEditor.rawValue)")
+            parts.append("Active editor: \(context.activeEditor.rawValue)")
         }
 
         if let summary = context.editorSummary {
-            parts.append("Contexte editeur:\n\(summary)")
+            parts.append("Editor context:\n\(summary)")
         }
 
         if let fileName = context.activeFileName {
-            parts.append("Fichier actif: \(fileName)")
+            parts.append("Active file: \(fileName)")
         }
 
         if let content = context.activeFileContent {
-            let truncated = content.count > 3000 ? String(content.prefix(3000)) + "\n... (tronque)" : content
-            parts.append("Contenu du fichier:\n```asm\n\(truncated)\n```")
+            let truncated = content.count > 3000 ? String(content.prefix(3000)) + "\n... (truncated)" : content
+            parts.append("File content:\n```asm\n\(truncated)\n```")
         }
 
         if let errors = context.lastBuildErrors, !errors.isEmpty {
-            parts.append("Dernieres erreurs de build:\n" + errors.joined(separator: "\n"))
+            parts.append("Recent build errors:\n" + errors.joined(separator: "\n"))
         }
 
         return parts.joined(separator: "\n\n")

@@ -19,7 +19,7 @@ struct CartridgeConfigView: View {
                     Image(systemName: "cpu")
                         .font(.system(size: 16))
                         .foregroundStyle(PyramidLevel.hardware.accent)
-                    Text("CONFIGURATION CARTOUCHE")
+                    Text("CARTRIDGE CONFIGURATION")
                         .font(.system(size: 13, weight: .semibold))
                         .tracking(0.5)
                         .foregroundStyle(PyramidLevel.hardware.accent)
@@ -47,10 +47,10 @@ struct CartridgeConfigView: View {
 
                 // Actions
                 HStack {
-                    Button("Appliquer") { applyConfig() }
+                    Button("Apply") { applyConfig() }
                         .buttonStyle(.borderedProminent)
 
-                    Button("Reinitialiser") {
+                    Button("Reset") {
                         if let profile = CartridgeProfile.preset(for: config.selectedProfileID) {
                             config = CartridgeConfig.fromProfile(profile)
                         }
@@ -68,7 +68,7 @@ struct CartridgeConfigView: View {
 
     private var profileGrid: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("PROFIL RAPIDE")
+            Text("QUICK PROFILE")
                 .font(.system(size: 10, weight: .semibold))
                 .tracking(0.5)
                 .foregroundStyle(SNESTheme.textSecondary)
@@ -94,7 +94,7 @@ struct CartridgeConfigView: View {
 
     private var detailSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("DETAIL DE LA CONFIGURATION")
+            Text("CONFIGURATION DETAILS")
                 .font(.system(size: 10, weight: .semibold))
                 .tracking(0.5)
                 .foregroundStyle(SNESTheme.textSecondary)
@@ -103,13 +103,13 @@ struct CartridgeConfigView: View {
             GroupBox("ROM") {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Text("Taille")
+                        Text("Size")
                             .font(.system(size: 12))
                             .foregroundStyle(SNESTheme.textSecondary)
                             .frame(width: 80, alignment: .leading)
                         Picker("", selection: $config.romSizeKB) {
                             ForEach(config.availableROMSizes, id: \.self) { size in
-                                Text(size >= 1024 ? "\(size / 1024) Mo" : "\(size) Ko").tag(size)
+                                Text(size >= 1024 ? "\(size / 1024) MB" : "\(size) KB").tag(size)
                             }
                         }
                         .labelsHidden()
@@ -131,7 +131,7 @@ struct CartridgeConfigView: View {
                     }
 
                     HStack {
-                        Text("Vitesse")
+                        Text("Speed")
                             .font(.system(size: 12))
                             .foregroundStyle(SNESTheme.textSecondary)
                             .frame(width: 80, alignment: .leading)
@@ -148,16 +148,16 @@ struct CartridgeConfigView: View {
             }
 
             // SRAM
-            GroupBox("SRAM (sauvegarde)") {
+            GroupBox("SRAM (save data)") {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Text("Taille")
+                        Text("Size")
                             .font(.system(size: 12))
                             .foregroundStyle(SNESTheme.textSecondary)
                             .frame(width: 80, alignment: .leading)
                         Picker("", selection: $config.sramSizeKB) {
                             ForEach(CartridgeConfig.sramSizes, id: \.self) { size in
-                                Text(size == 0 ? "Aucune" : "\(size) Ko").tag(size)
+                                Text(size == 0 ? "None" : "\(size) KB").tag(size)
                             }
                         }
                         .labelsHidden()
@@ -199,7 +199,7 @@ struct CartridgeConfigView: View {
 
     private var summarySection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("RESUME")
+            Text("SUMMARY")
                 .font(.system(size: 10, weight: .semibold))
                 .tracking(0.5)
                 .foregroundStyle(SNESTheme.textSecondary)
@@ -225,7 +225,7 @@ struct CartridgeConfigView: View {
         do {
             try state.projectManager.updateCartridge(config)
             state.recalculateBudget()
-            state.appendConsole("Config cartouche mise a jour: \(config.mapping.rawValue) \(config.romSizeKB) Ko", type: .success)
+            state.appendConsole("Cartridge config updated: \(config.mapping.rawValue) \(config.romSizeKB) KB", type: .success)
             errorMessage = nil
         } catch {
             errorMessage = error.localizedDescription
@@ -246,7 +246,7 @@ private struct CartridgeProfileCard: View {
                 Text(profile.name)
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(isSelected ? SNESTheme.textPrimary : SNESTheme.textSecondary)
-                Text(profile.romSizeKB >= 1024 ? "\(profile.romSizeKB / 1024) Mo" : "\(profile.romSizeKB) Ko")
+                Text(profile.romSizeKB >= 1024 ? "\(profile.romSizeKB / 1024) MB" : "\(profile.romSizeKB) KB")
                     .font(.system(size: 10, design: .monospaced))
                     .foregroundStyle(isSelected ? PyramidLevel.hardware.accent : SNESTheme.textDisabled)
                 Text(profile.mapping.rawValue)

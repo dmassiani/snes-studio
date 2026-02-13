@@ -52,7 +52,7 @@ struct ROMAnalyzerView: View {
                     .foregroundStyle(SNESTheme.textSecondary)
             }
 
-            Button("Importer ROM...") {
+            Button("Import ROM...") {
                 importROM()
             }
             .buttonStyle(.bordered)
@@ -71,15 +71,15 @@ struct ROMAnalyzerView: View {
                 .font(.system(size: 48))
                 .foregroundStyle(PyramidLevel.hardware.accent.opacity(0.4))
 
-            Text("Importer une ROM SNES")
+            Text("Import a SNES ROM")
                 .font(.system(size: 16, weight: .medium))
                 .foregroundStyle(SNESTheme.textSecondary)
 
-            Text("Fichiers .sfc ou .smc")
+            Text("SFC or SMC files")
                 .font(.system(size: 12))
                 .foregroundStyle(SNESTheme.textDisabled)
 
-            Button("Choisir un fichier...") {
+            Button("Choose a file...") {
                 importROM()
             }
             .buttonStyle(.bordered)
@@ -95,7 +95,7 @@ struct ROMAnalyzerView: View {
             Text(message)
                 .font(.system(size: 13))
                 .foregroundStyle(SNESTheme.textSecondary)
-            Button("Reessayer") {
+            Button("Retry") {
                 importROM()
             }
             .buttonStyle(.bordered)
@@ -139,7 +139,7 @@ struct ROMAnalyzerView: View {
                 }
             }
 
-            state.appendConsole("ROM analysee: \(analyzer.result?.fileName ?? "?")", type: .info)
+            state.appendConsole(String(localized: "ROM analyzed: \(analyzer.result?.fileName ?? "?")"), type: .info)
         }
     }
 }

@@ -33,7 +33,7 @@ struct ROMTileExplorerView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
                     if !tileBlocks.isEmpty {
-                        Text("\(tileBlocks.first?.tiles.count ?? 0) tiles extraites")
+                        Text("\(tileBlocks.first?.tiles.count ?? 0) tiles extracted")
                             .font(.system(size: 11))
                             .foregroundStyle(SNESTheme.textSecondary)
                             .padding(.horizontal)
@@ -43,7 +43,7 @@ struct ROMTileExplorerView: View {
                         // Import button
                         HStack {
                             Spacer()
-                            Button("Importer \(tileBlocks.first?.tiles.count ?? 0) tiles") {
+                            Button("Import \(tileBlocks.first?.tiles.count ?? 0) tiles") {
                                 importTiles()
                             }
                             .buttonStyle(.bordered)
@@ -56,7 +56,7 @@ struct ROMTileExplorerView: View {
                             Image(systemName: "square.grid.3x3")
                                 .font(.system(size: 32))
                                 .foregroundStyle(SNESTheme.textDisabled)
-                            Text("Aucune tile extraite")
+                            Text("No tiles extracted")
                                 .font(.system(size: 12))
                                 .foregroundStyle(SNESTheme.textDisabled)
                         }
@@ -138,6 +138,6 @@ struct ROMTileExplorerView: View {
     private func importTiles() {
         guard let tiles = tileBlocks.first?.tiles, !tiles.isEmpty else { return }
         state.assetStore.tiles.append(contentsOf: tiles)
-        state.appendConsole("Importe \(tiles.count) tiles depuis ROM", type: .success)
+        state.appendConsole(String(localized: "Imported \(tiles.count) tiles from ROM"), type: .success)
     }
 }

@@ -22,7 +22,7 @@ struct BudgetMeter: Identifiable {
     }
 
     var formattedValue: String {
-        if unit == "Ko" {
+        if unit == "KB" {
             return "\(Int(used))\(unit) / \(Int(total))\(unit)"
         }
         return "\(Int(used)) / \(Int(total))"
@@ -70,16 +70,16 @@ extension BudgetMeter {
         }()
 
         var meters: [BudgetMeter] = [
-            BudgetMeter(id: "vram",    label: "VRAM",    used: vramUsedKB, total: 64,  unit: "Ko"),
-            BudgetMeter(id: "rom",     label: "ROM",     used: 0, total: Double(config.romSizeKB), unit: "Ko"),
+            BudgetMeter(id: "vram",    label: "VRAM",    used: vramUsedKB, total: 64,  unit: "KB"),
+            BudgetMeter(id: "rom",     label: "ROM",     used: 0, total: Double(config.romSizeKB), unit: "KB"),
             BudgetMeter(id: "cgram",   label: "CGRAM",   used: cgramUsed, total: 16,  unit: "palettes"),
             BudgetMeter(id: "sprites", label: "Sprites",  used: spritesUsed, total: 128, unit: "", detail: "Max scanline: 32"),
-            BudgetMeter(id: "wram",    label: "WRAM",    used: 0, total: 128, unit: "Ko"),
+            BudgetMeter(id: "wram",    label: "WRAM",    used: 0, total: 128, unit: "KB"),
             BudgetMeter(id: "cpu",     label: "CPU est.", used: 0, total: 100, unit: "%"),
         ]
         if config.sramSizeKB > 0 {
             meters.insert(
-                BudgetMeter(id: "sram", label: "SRAM", used: 0, total: Double(config.sramSizeKB), unit: "Ko"),
+                BudgetMeter(id: "sram", label: "SRAM", used: 0, total: Double(config.sramSizeKB), unit: "KB"),
                 at: 2
             )
         }

@@ -8,7 +8,7 @@ struct MemoryMapView: View {
         VStack(spacing: 0) {
             // Toolbar
             HStack {
-                Text("Carte Memoire SNES")
+                Text("SNES Memory Map")
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(SNESTheme.textPrimary)
                 Spacer()
@@ -70,22 +70,22 @@ struct MemoryMapView: View {
     private var loROMRegions: [MemoryRegion] {
         [
             MemoryRegion(startAddress: "$0000", endAddress: "$1FFF",
-                         label: "Scratch RAM", detail: "8 KB WRAM (miroir)", sizeKB: 8,
+                         label: "Scratch RAM", detail: "8 KB WRAM (mirror)", sizeKB: 8,
                          color: Color(hex: "4AFF9B"), heightFactor: 0.4),
             MemoryRegion(startAddress: "$2100", endAddress: "$21FF",
-                         label: "PPU Registers", detail: "I/O Registres PPU", sizeKB: 0,
+                         label: "PPU Registers", detail: "PPU I/O Registers", sizeKB: 0,
                          color: Color(hex: "FF8A4A"), heightFactor: 0.3),
             MemoryRegion(startAddress: "$4200", endAddress: "$44FF",
-                         label: "CPU / DMA", detail: "CPU I/O, DMA, controleurs", sizeKB: 0,
+                         label: "CPU / DMA", detail: "CPU I/O, DMA, controllers", sizeKB: 0,
                          color: Color(hex: "FFD04A"), heightFactor: 0.3),
             MemoryRegion(startAddress: "$7E0000", endAddress: "$7FFFFF",
                          label: "WRAM", detail: "128 KB Work RAM", sizeKB: 128,
                          color: Color(hex: "4AFF9B"), heightFactor: 1.0),
             MemoryRegion(startAddress: "$008000", endAddress: "$3FFFFF",
-                         label: "ROM (Low)", detail: "LoROM banks $00-$7D (32KB par bank)", sizeKB: 2048,
+                         label: "ROM (Low)", detail: "LoROM banks $00-$7D (32KB per bank)", sizeKB: 2048,
                          color: Color(hex: "4A9EFF"), heightFactor: 1.2),
             MemoryRegion(startAddress: "$700000", endAddress: "$7DFFFF",
-                         label: "SRAM", detail: "Sauvegarde cartouche", sizeKB: 32,
+                         label: "SRAM", detail: "Cartridge save RAM", sizeKB: 32,
                          color: Color(hex: "9B6DFF"), heightFactor: 0.5),
         ]
     }
@@ -93,22 +93,22 @@ struct MemoryMapView: View {
     private var hiROMRegions: [MemoryRegion] {
         [
             MemoryRegion(startAddress: "$0000", endAddress: "$1FFF",
-                         label: "Scratch RAM", detail: "8 KB WRAM (miroir)", sizeKB: 8,
+                         label: "Scratch RAM", detail: "8 KB WRAM (mirror)", sizeKB: 8,
                          color: Color(hex: "4AFF9B"), heightFactor: 0.4),
             MemoryRegion(startAddress: "$2100", endAddress: "$21FF",
-                         label: "PPU Registers", detail: "I/O Registres PPU", sizeKB: 0,
+                         label: "PPU Registers", detail: "PPU I/O Registers", sizeKB: 0,
                          color: Color(hex: "FF8A4A"), heightFactor: 0.3),
             MemoryRegion(startAddress: "$4200", endAddress: "$44FF",
-                         label: "CPU / DMA", detail: "CPU I/O, DMA, controleurs", sizeKB: 0,
+                         label: "CPU / DMA", detail: "CPU I/O, DMA, controllers", sizeKB: 0,
                          color: Color(hex: "FFD04A"), heightFactor: 0.3),
             MemoryRegion(startAddress: "$7E0000", endAddress: "$7FFFFF",
                          label: "WRAM", detail: "128 KB Work RAM", sizeKB: 128,
                          color: Color(hex: "4AFF9B"), heightFactor: 1.0),
             MemoryRegion(startAddress: "$C00000", endAddress: "$FFFFFF",
-                         label: "ROM (High)", detail: "HiROM banks $C0-$FF (64KB par bank)", sizeKB: 4096,
+                         label: "ROM (High)", detail: "HiROM banks $C0-$FF (64KB per bank)", sizeKB: 4096,
                          color: Color(hex: "4A9EFF"), heightFactor: 1.2),
             MemoryRegion(startAddress: "$206000", endAddress: "$3FFFFF",
-                         label: "SRAM", detail: "Sauvegarde cartouche", sizeKB: 32,
+                         label: "SRAM", detail: "Cartridge save RAM", sizeKB: 32,
                          color: Color(hex: "9B6DFF"), heightFactor: 0.5),
         ]
     }
@@ -119,16 +119,16 @@ struct MemoryMapView: View {
                          label: "Scratch RAM", detail: "8 KB WRAM", sizeKB: 8,
                          color: Color(hex: "4AFF9B"), heightFactor: 0.4),
             MemoryRegion(startAddress: "$2100", endAddress: "$21FF",
-                         label: "PPU Registers", detail: "I/O Registres PPU", sizeKB: 0,
+                         label: "PPU Registers", detail: "PPU I/O Registers", sizeKB: 0,
                          color: Color(hex: "FF8A4A"), heightFactor: 0.3),
             MemoryRegion(startAddress: "$7E0000", endAddress: "$7FFFFF",
                          label: "WRAM", detail: "128 KB Work RAM", sizeKB: 128,
                          color: Color(hex: "4AFF9B"), heightFactor: 1.0),
             MemoryRegion(startAddress: "$C00000", endAddress: "$FFFFFF",
-                         label: "ROM (High)", detail: "ExHiROM banks — jusqu'a 8 Mo", sizeKB: 8192,
+                         label: "ROM (High)", detail: "ExHiROM banks — up to 8 MB", sizeKB: 8192,
                          color: Color(hex: "4A9EFF"), heightFactor: 1.5),
             MemoryRegion(startAddress: "$206000", endAddress: "$3FFFFF",
-                         label: "SRAM", detail: "Sauvegarde cartouche", sizeKB: 32,
+                         label: "SRAM", detail: "Cartridge save RAM", sizeKB: 32,
                          color: Color(hex: "9B6DFF"), heightFactor: 0.5),
         ]
     }

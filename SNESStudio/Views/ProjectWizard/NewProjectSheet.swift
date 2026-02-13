@@ -15,11 +15,11 @@ struct NewProjectSheet: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Text("Nouveau projet SNES")
+                Text("New SNES Project")
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundStyle(SNESTheme.textPrimary)
                 Spacer()
-                Text("Etape \(step)/3")
+                Text("Step \(step)/3")
                     .font(.system(size: 12))
                     .foregroundStyle(SNESTheme.textSecondary)
             }
@@ -50,24 +50,24 @@ struct NewProjectSheet: View {
 
             // Footer
             HStack {
-                Button("Annuler") { dismiss() }
+                Button("Cancel") { dismiss() }
                     .buttonStyle(.plain)
                     .foregroundStyle(SNESTheme.textSecondary)
 
                 Spacer()
 
                 if step > 1 {
-                    Button("Precedent") { withAnimation { step -= 1 } }
+                    Button("Previous") { withAnimation { step -= 1 } }
                         .buttonStyle(.plain)
                         .foregroundStyle(SNESTheme.textSecondary)
                 }
 
                 if step < 3 {
-                    Button("Suivant") { withAnimation { step += 1 } }
+                    Button("Next") { withAnimation { step += 1 } }
                         .buttonStyle(.borderedProminent)
                         .disabled(step == 1 && projectName.isEmpty)
                 } else {
-                    Button("Creer le projet") { createProject() }
+                    Button("Create Project") { createProject() }
                         .buttonStyle(.borderedProminent)
                         .disabled(projectName.isEmpty)
                 }
@@ -83,19 +83,19 @@ struct NewProjectSheet: View {
 
     private var stepName: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Nom du projet")
+            Text("Project Name")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(SNESTheme.textPrimary)
 
-            TextField("Mon jeu SNES", text: $projectName)
+            TextField("My SNES Game", text: $projectName)
                 .textFieldStyle(.roundedBorder)
 
-            Text("Emplacement")
+            Text("Location")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(SNESTheme.textPrimary)
 
             HStack {
-                Text(projectLocation?.path ?? "Non selectionne")
+                Text(projectLocation?.path ?? "Not selected")
                     .font(.system(size: 12))
                     .foregroundStyle(SNESTheme.textSecondary)
                     .lineLimit(1)
@@ -103,7 +103,7 @@ struct NewProjectSheet: View {
 
                 Spacer()
 
-                Button("Choisir...") {
+                Button("Choose...") {
                     let panel = NSOpenPanel()
                     panel.canChooseFiles = false
                     panel.canChooseDirectories = true
@@ -136,7 +136,7 @@ struct NewProjectSheet: View {
 
     private var stepCartridge: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Profil de cartouche")
+            Text("Cartridge Profile")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(SNESTheme.textPrimary)
 
@@ -159,7 +159,7 @@ struct NewProjectSheet: View {
                 DetailChip(label: "ROM", value: formatSize(selectedProfile.romSizeKB))
                 DetailChip(label: "Mapping", value: selectedProfile.mapping.rawValue)
                 if selectedProfile.sramSizeKB > 0 {
-                    DetailChip(label: "SRAM", value: "\(selectedProfile.sramSizeKB) Ko")
+                    DetailChip(label: "SRAM", value: "\(selectedProfile.sramSizeKB) KB")
                 }
                 if selectedProfile.chip != .none {
                     DetailChip(label: "Chip", value: selectedProfile.chip.rawValue)
@@ -173,35 +173,35 @@ struct NewProjectSheet: View {
 
     private var stepSummary: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Resume du projet")
+            Text("Project Summary")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(SNESTheme.textPrimary)
 
             VStack(alignment: .leading, spacing: 6) {
-                SummaryRow(label: "Nom", value: projectName)
-                SummaryRow(label: "Emplacement", value: projectLocation?.path ?? "?")
+                SummaryRow(label: "Name", value: projectName)
+                SummaryRow(label: "Location", value: projectLocation?.path ?? "?")
                 SummaryRow(label: "Template", value: template.label)
             }
 
             SNESTheme.border.frame(height: 1).padding(.vertical, 4)
 
-            Text("Cartouche")
+            Text("Cartridge")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(PyramidLevel.hardware.accent)
 
             VStack(alignment: .leading, spacing: 6) {
-                SummaryRow(label: "Profil", value: selectedProfile.name)
+                SummaryRow(label: "Profile", value: selectedProfile.name)
                 SummaryRow(label: "ROM", value: formatSize(selectedProfile.romSizeKB))
                 SummaryRow(label: "Mapping", value: selectedProfile.mapping.rawValue)
-                SummaryRow(label: "Vitesse", value: selectedProfile.speed.rawValue)
-                SummaryRow(label: "SRAM", value: selectedProfile.sramSizeKB > 0 ? "\(selectedProfile.sramSizeKB) Ko" : "Aucune")
+                SummaryRow(label: "Speed", value: selectedProfile.speed.rawValue)
+                SummaryRow(label: "SRAM", value: selectedProfile.sramSizeKB > 0 ? "\(selectedProfile.sramSizeKB) KB" : "None")
                 SummaryRow(label: "Chip", value: selectedProfile.chip.rawValue)
                 SummaryRow(label: "Linker", value: CartridgeConfig.fromProfile(selectedProfile).linkerConfigName)
             }
 
             SNESTheme.border.frame(height: 1).padding(.vertical, 4)
 
-            Text("Fichiers generes")
+            Text("Generated Files")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(PyramidLevel.logique.accent)
 
@@ -227,7 +227,7 @@ struct NewProjectSheet: View {
 
     private func createProject() {
         guard let location = projectLocation else {
-            errorMessage = "Selectionnez un emplacement"
+            errorMessage = "Select a location"
             return
         }
         let config = CartridgeConfig.fromProfile(selectedProfile)
@@ -246,7 +246,7 @@ struct NewProjectSheet: View {
     }
 
     private func formatSize(_ kb: Int) -> String {
-        kb >= 1024 ? "\(kb / 1024) Mo" : "\(kb) Ko"
+        kb >= 1024 ? "\(kb / 1024) MB" : "\(kb) KB"
     }
 }
 
@@ -266,7 +266,7 @@ private struct ProfileCard: View {
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundStyle(isSelected ? SNESTheme.textPrimary : SNESTheme.textSecondary)
 
-                Text(profile.romSizeKB >= 1024 ? "\(profile.romSizeKB / 1024) Mo" : "\(profile.romSizeKB) Ko")
+                Text(profile.romSizeKB >= 1024 ? "\(profile.romSizeKB / 1024) MB" : "\(profile.romSizeKB) KB")
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundStyle(isSelected ? PyramidLevel.hardware.accent : SNESTheme.textDisabled)
 

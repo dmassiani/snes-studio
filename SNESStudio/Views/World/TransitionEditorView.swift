@@ -22,7 +22,7 @@ struct TransitionEditorView: View {
                     Image(systemName: "arrow.left.arrow.right")
                         .font(.system(size: 32))
                         .foregroundStyle(SNESTheme.textDisabled)
-                    Text("Selectionnez une transition")
+                    Text("Select a transition")
                         .font(.system(size: 12))
                         .foregroundStyle(SNESTheme.textDisabled)
                 }
@@ -92,10 +92,10 @@ struct TransitionEditorView: View {
             VStack(alignment: .leading, spacing: 16) {
                 // Name
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Nom")
+                    Text("Name")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    TextField("Nom", text: $state.assetStore.worldTransitions[index].name)
+                    TextField("Name", text: $state.assetStore.worldTransitions[index].name)
                         .textFieldStyle(.roundedBorder)
                         .font(.system(size: 12))
                 }
@@ -115,7 +115,7 @@ struct TransitionEditorView: View {
 
                 // Duration
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Duree (frames)")
+                    Text("Duration (frames)")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(SNESTheme.textSecondary)
                     Stepper("\(state.assetStore.worldTransitions[index].durationFrames) frames",
@@ -128,11 +128,11 @@ struct TransitionEditorView: View {
                 Divider()
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Ecran source")
+                    Text("Source screen")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(SNESTheme.textSecondary)
                     Picker("", selection: $state.assetStore.worldTransitions[index].fromScreenID) {
-                        Text("Aucun").tag(UUID?.none)
+                        Text("None").tag(UUID?.none)
                         ForEach(state.assetStore.worldScreens) { s in
                             Text(s.name).tag(UUID?.some(s.id))
                         }
@@ -141,11 +141,11 @@ struct TransitionEditorView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Ecran cible")
+                    Text("Target screen")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(SNESTheme.textSecondary)
                     Picker("", selection: $state.assetStore.worldTransitions[index].toScreenID) {
-                        Text("Aucun").tag(UUID?.none)
+                        Text("None").tag(UUID?.none)
                         ForEach(state.assetStore.worldScreens) { s in
                             Text(s.name).tag(UUID?.some(s.id))
                         }
@@ -174,7 +174,7 @@ struct TransitionEditorView: View {
         }
 
         return VStack(alignment: .leading, spacing: 4) {
-            Text("Cout estime")
+            Text("Estimated cost")
                 .font(.system(size: 11, weight: .semibold))
                 .foregroundStyle(SNESTheme.textSecondary)
 
@@ -183,26 +183,26 @@ struct TransitionEditorView: View {
                     from: from, to: to, tiles: state.assetStore.tiles)
 
                 HStack(spacing: 12) {
-                    costLabel("Tiles a charger", "\(cost.tilesToLoad)")
-                    costLabel("Tiles a retirer", "\(cost.tilesToRemove)")
+                    costLabel("Tiles to load", "\(cost.tilesToLoad)")
+                    costLabel("Tiles to remove", "\(cost.tilesToRemove)")
                 }
                 HStack(spacing: 12) {
-                    costLabel("Octets", "\(cost.bytesToTransfer)")
+                    costLabel("Bytes", "\(cost.bytesToTransfer)")
                     costLabel("Frames", "\(cost.framesNeeded)")
                 }
 
                 if cost.isFeasible {
-                    Label("Faisable en VBlank", systemImage: "checkmark.circle")
+                    Label("Feasible in VBlank", systemImage: "checkmark.circle")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.success)
                 } else {
-                    Label("Trop lourd pour un VBlank — utiliser chargement progressif",
+                    Label("Too heavy for a single VBlank -- use progressive loading",
                           systemImage: "exclamationmark.triangle")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.warning)
                 }
             } else {
-                Text("Selectionnez les ecrans source et cible")
+                Text("Select the source and target screens")
                     .font(.system(size: 11))
                     .foregroundStyle(SNESTheme.textDisabled)
             }

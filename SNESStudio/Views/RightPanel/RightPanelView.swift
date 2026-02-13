@@ -43,7 +43,7 @@ private struct LogiquePanel: View {
                 }
             }
 
-            PanelSection(title: "SYMBOLES", accent: PyramidLevel.logique.accent) {
+            PanelSection(title: "SYMBOLS", accent: PyramidLevel.logique.accent) {
                 VStack(alignment: .leading, spacing: 4) {
                     SymbolRow(name: "Main", address: "$8000")
                     SymbolRow(name: "VBlank", address: "$8100")
@@ -52,12 +52,12 @@ private struct LogiquePanel: View {
                 }
             }
 
-            PanelSection(title: "FICHIERS OUVERTS", accent: PyramidLevel.logique.accent) {
+            PanelSection(title: "OPEN FILES", accent: PyramidLevel.logique.accent) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("main.asm — modifie")
+                    Text("main.asm — modified")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    Text("player.asm — sauve")
+                    Text("player.asm — saved")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textDisabled)
                 }
@@ -78,17 +78,17 @@ private struct OrchestrePanel: View {
                     BudgetRow(label: "BG2 Tiles", value: "8Ko", pct: 0.12)
                     BudgetRow(label: "Sprites", value: "12Ko", pct: 0.19)
                     BudgetRow(label: "Tilemaps", value: "4Ko", pct: 0.06)
-                    BudgetRow(label: "Libre", value: "16Ko", pct: 0.25)
+                    BudgetRow(label: "Free", value: "16Ko", pct: 0.25)
                 }
             }
 
-            PanelSection(title: "ECRAN ACTIF", accent: PyramidLevel.orchestre.accent) {
+            PanelSection(title: "ACTIVE SCREEN", accent: PyramidLevel.orchestre.accent) {
                 VStack(alignment: .leading, spacing: 4) {
-                    InfoRow(label: "Nom", value: "Foret-01")
-                    InfoRow(label: "Tiles requis", value: "124")
+                    InfoRow(label: "Name", value: "Foret-01")
+                    InfoRow(label: "Required tiles", value: "124")
                     InfoRow(label: "Palettes", value: "3")
-                    InfoRow(label: "Entites", value: "8")
-                    InfoRow(label: "Sorties", value: "2")
+                    InfoRow(label: "Entities", value: "8")
+                    InfoRow(label: "Exits", value: "2")
                 }
             }
         }
@@ -101,7 +101,7 @@ private struct OrchestrePanel: View {
 private struct AtelierPanel: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            PanelSection(title: "PALETTE ACTIVE", accent: PyramidLevel.atelier.accent) {
+            PanelSection(title: "ACTIVE PALETTE", accent: PyramidLevel.atelier.accent) {
                 // 4x4 color grid placeholder
                 LazyVGrid(columns: Array(repeating: GridItem(.fixed(32), spacing: 4), count: 4), spacing: 4) {
                     ForEach(0..<16, id: \.self) { i in
@@ -119,13 +119,13 @@ private struct AtelierPanel: View {
                 VStack(alignment: .leading, spacing: 4) {
                     InfoRow(label: "Index", value: "#042")
                     InfoRow(label: "Format", value: "4bpp")
-                    InfoRow(label: "Taille", value: "32 bytes")
+                    InfoRow(label: "Size", value: "32 bytes")
                     InfoRow(label: "Palette", value: "Palette 2")
-                    InfoRow(label: "Utilise", value: "7 fois")
+                    InfoRow(label: "Used", value: "7 times")
                 }
             }
 
-            PanelSection(title: "PROPRIETES", accent: PyramidLevel.atelier.accent) {
+            PanelSection(title: "PROPERTIES", accent: PyramidLevel.atelier.accent) {
                 VStack(alignment: .leading, spacing: 6) {
                     Toggle("Flip H", isOn: .constant(false))
                         .font(.system(size: 11))
@@ -134,7 +134,7 @@ private struct AtelierPanel: View {
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textSecondary)
                     HStack {
-                        Text("Priorite")
+                        Text("Priority")
                             .font(.system(size: 11))
                             .foregroundStyle(SNESTheme.textSecondary)
                         Spacer()
@@ -154,12 +154,12 @@ private struct AtelierPanel: View {
 private struct HardwarePanel: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            PanelSection(title: "REGISTRE SELECT.", accent: PyramidLevel.hardware.accent) {
+            PanelSection(title: "SELECTED REGISTER", accent: PyramidLevel.hardware.accent) {
                 VStack(alignment: .leading, spacing: 4) {
-                    InfoRow(label: "Registre", value: "$2100")
-                    InfoRow(label: "Nom", value: "INIDISP")
-                    InfoRow(label: "Valeur", value: "$0F")
-                    InfoRow(label: "Binaire", value: "0000 1111")
+                    InfoRow(label: "Register", value: "$2100")
+                    InfoRow(label: "Name", value: "INIDISP")
+                    InfoRow(label: "Value", value: "$0F")
+                    InfoRow(label: "Binary", value: "0000 1111")
 
                     SNESTheme.border.frame(height: 1)
                         .padding(.vertical, 4)
@@ -175,7 +175,7 @@ private struct HardwarePanel: View {
                 }
             }
 
-            PanelSection(title: "ACCES DANS CODE", accent: PyramidLevel.hardware.accent) {
+            PanelSection(title: "CODE REFERENCES", accent: PyramidLevel.hardware.accent) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("main.asm:42  STA $2100")
                         .font(.system(size: 10, design: .monospaced))

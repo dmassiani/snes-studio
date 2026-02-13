@@ -10,7 +10,7 @@ struct ROMPaletteExplorerView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("\(paletteBlocks.count) palettes detectees")
+                Text("\(paletteBlocks.count) palettes detected")
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundStyle(SNESTheme.textSecondary)
                 Spacer()
@@ -26,7 +26,7 @@ struct ROMPaletteExplorerView: View {
                     Image(systemName: "paintpalette")
                         .font(.system(size: 32))
                         .foregroundStyle(SNESTheme.textDisabled)
-                    Text("Aucune palette detectee")
+                    Text("No palette detected")
                         .font(.system(size: 12))
                         .foregroundStyle(SNESTheme.textDisabled)
                 }
@@ -66,7 +66,7 @@ struct ROMPaletteExplorerView: View {
             Spacer()
 
             // Import button
-            Button("Importer") {
+            Button("Import") {
                 importPalette(block)
             }
             .buttonStyle(.bordered)
@@ -90,6 +90,6 @@ struct ROMPaletteExplorerView: View {
             // Replace last palette
             state.assetStore.palettes[15] = block.palette
         }
-        state.appendConsole("Palette importee depuis offset \(String(format: "$%06X", block.offset))", type: .success)
+        state.appendConsole(String(localized: "Palette imported from offset \(String(format: "$%06X", block.offset))"), type: .success)
     }
 }

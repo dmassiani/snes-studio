@@ -9,9 +9,9 @@ enum AnthropicError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noAPIKey:
-            return "Cle API Anthropic manquante (ANTHROPIC_API_KEY)"
+            return "Anthropic API key missing (ANTHROPIC_API_KEY)"
         case .networkError(let error):
-            return "Erreur reseau: \(error.localizedDescription)"
+            return "Network error: \(error.localizedDescription)"
         case .httpError(let code, let message):
             return "HTTP \(code): \(message)"
         case .streamingError(let message):

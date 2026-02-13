@@ -95,7 +95,7 @@ struct VRAMViewerView: View {
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundStyle(SNESTheme.textSecondary)
                 Spacer()
-                Text(String(format: "%.1f%% utilise (%d / 65536 octets)",
+                Text(String(format: "%.1f%% used (%d / 65536 bytes)",
                             budget.percentage, budget.usedBytes))
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundStyle(budget.isOverBudget ? SNESTheme.danger : SNESTheme.textSecondary)
@@ -147,7 +147,7 @@ struct VRAMViewerView: View {
 
     private var tileGridView: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Tiles du projet (\(state.assetStore.tiles.count))")
+            Text("Project tiles (\(state.assetStore.tiles.count))")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(SNESTheme.textSecondary)
 

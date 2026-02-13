@@ -4,6 +4,8 @@ struct SettingsView: View {
     @State private var apiKey: String = ""
     @State private var showKey: Bool = false
     @State private var saved: Bool = false
+    @State private var selectedLanguage: AppLanguage = .system
+    @State private var needsRestart: Bool = false
 
     private let keychainKey = "anthropic_api_key"
 
@@ -11,11 +13,39 @@ struct SettingsView: View {
         Form {
             Section {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Cle API Anthropic")
+                    Text("Language")
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(SNESTheme.textPrimary)
 
-                    Text("Necessaire pour l'assistant IA integre. Obtenez une cle sur console.anthropic.com")
+                    Picker("", selection: $selectedLanguage) {
+                        ForEach(AppLanguage.allCases) { lang in
+                            Text(lang.label).tag(lang)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.radioGroup)
+                    .onChange(of: selectedLanguage) { _, newValue in
+                        newValue.apply()
+                        needsRestart = true
+                    }
+
+                    if needsRestart {
+                        Label("Restart the app to apply the new language", systemImage: "arrow.clockwise")
+                            .font(.system(size: 11))
+                            .foregroundStyle(SNESTheme.warning)
+                            .transition(.opacity)
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+
+            Section {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Anthropic API Key")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(SNESTheme.textPrimary)
+
+                    Text("Required for the built-in AI assistant. Get a key at console.anthropic.com")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textSecondary)
 
@@ -42,7 +72,7 @@ struct SettingsView: View {
                     }
 
                     HStack {
-                        Button("Sauvegarder") {
+                        Button("Save") {
                             let trimmed = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
                             if trimmed.isEmpty {
                                 KeychainHelper.delete(key: keychainKey)
@@ -57,7 +87,7 @@ struct SettingsView: View {
                         .buttonStyle(.borderedProminent)
 
                         if saved {
-                            Label("Sauvegarde", systemImage: "checkmark.circle.fill")
+                            Label("Saved", systemImage: "checkmark.circle.fill")
                                 .font(.system(size: 11))
                                 .foregroundStyle(SNESTheme.success)
                                 .transition(.opacity)
@@ -68,9 +98,50 @@ struct SettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .frame(width: 480, height: 200)
+        .frame(width: 480, height: 340)
         .onAppear {
             apiKey = KeychainHelper.read(key: keychainKey) ?? ""
+            selectedLanguage = AppLanguage.current
+        }
+    }
+}
+
+// MARK: - App Language
+
+enum AppLanguage: String, CaseIterable, Identifiable {
+    case system
+    case en
+    case fr
+    case es
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .system: String(localized: "System default")
+        case .en:     "English"
+        case .fr:     "Français"
+        case .es:     "Español"
+        }
+    }
+
+    static var current: AppLanguage {
+        guard let langs = UserDefaults.standard.array(forKey: "AppleLanguages") as? [String],
+              let first = langs.first else {
+            return .system
+        }
+        // UserDefaults may store "fr-FR" style — match prefix
+        for lang in AppLanguage.allCases where lang != .system {
+            if first.hasPrefix(lang.rawValue) { return lang }
+        }
+        return .system
+    }
+
+    func apply() {
+        if self == .system {
+            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+        } else {
+            UserDefaults.standard.set([rawValue], forKey: "AppleLanguages")
         }
     }
 }

@@ -20,17 +20,24 @@ targets:
       - path: SNESStudio
         excludes:
           - "Resources/**"
-    resources:
       - path: SNESStudio/Resources/Assets.xcassets
+        type: resource
       - path: SNESStudio/Resources/CodeMirror
+        type: resource
+      - path: SNESStudio/Resources/Localizable.xcstrings
+        type: resource
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.snesstudio.app
         PRODUCT_NAME: "SNES Studio"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: JD74ATC9J8
+        CODE_SIGN_IDENTITY: "Apple Development"
         CODE_SIGN_ENTITLEMENTS: SNESStudio/SNESStudio.entitlements
         MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: 1
         SWIFT_STRICT_CONCURRENCY: complete
+        SWIFT_EMIT_LOC_STRINGS: "YES"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
     info:
@@ -41,6 +48,11 @@ targets:
         CFBundleIdentifier: com.snesstudio.app
         CFBundleVersion: "1"
         CFBundleShortVersionString: "0.1.0"
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations:
+          - en
+          - fr
+          - es
         CFBundlePackageType: APPL
         CFBundleExecutable: "$(EXECUTABLE_NAME)"
         LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"

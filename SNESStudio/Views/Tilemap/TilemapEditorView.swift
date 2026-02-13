@@ -185,7 +185,7 @@ struct TilemapEditorContainerView: View {
                         .foregroundStyle(SNESTheme.textSecondary)
                 }
                 .buttonStyle(.plain)
-                .help("Nouvelle tilemap")
+                .help("New tilemap")
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 8)
@@ -222,7 +222,7 @@ struct TilemapEditorContainerView: View {
                 .frame(width: 14)
 
             if isRenaming && isSelected {
-                TextField("Nom", text: $renameText, onCommit: {
+                TextField("Name", text: $renameText, onCommit: {
                     tilemaps[index].name = renameText
                     isRenaming = false
                 })
@@ -249,7 +249,7 @@ struct TilemapEditorContainerView: View {
                         .foregroundStyle(SNESTheme.danger.opacity(0.6))
                 }
                 .buttonStyle(.plain)
-                .help("Supprimer")
+                .help("Delete")
             }
         }
         .padding(.horizontal, 10)
@@ -367,7 +367,7 @@ struct TilemapEditorContainerView: View {
                     .foregroundStyle(showGrid ? SNESTheme.info : SNESTheme.textDisabled)
             }
             .buttonStyle(.plain)
-            .help(showGrid ? "Masquer la grille" : "Afficher la grille")
+            .help(showGrid ? "Hide grid" : "Show grid")
 
             SNESTheme.border.frame(width: 1, height: 12)
 

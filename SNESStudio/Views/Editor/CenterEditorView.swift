@@ -25,7 +25,7 @@ struct CenterEditorView: View {
                 .font(.system(size: 36))
                 .foregroundStyle(SNESTheme.textDisabled)
 
-            Text("Selectionne un onglet")
+            Text("Select a tab")
                 .font(.system(size: 13))
                 .foregroundStyle(SNESTheme.textDisabled)
         }

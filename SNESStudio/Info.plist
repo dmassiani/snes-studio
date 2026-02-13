@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>SNES Studio</string>
 	<key>CFBundleDocumentTypes</key>
@@ -36,6 +36,12 @@
 	<string>com.snesstudio.app</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+		<string>es</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>SNES Studio</string>
 	<key>CFBundlePackageType</key>

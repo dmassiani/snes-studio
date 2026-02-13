@@ -29,11 +29,11 @@ struct ScreenListView: View {
 
     private var toolbar: some View {
         HStack {
-            Text("Ecrans")
+            Text("Screens")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(SNESTheme.textPrimary)
             Spacer()
-            Text("\(state.assetStore.worldScreens.count) ecran(s)")
+            Text("\(state.assetStore.worldScreens.count) screen(s)")
                 .font(.system(size: 11))
                 .foregroundStyle(SNESTheme.textDisabled)
         }
@@ -60,18 +60,18 @@ struct ScreenListView: View {
                     .font(.system(size: 10, design: .monospaced))
                     .foregroundStyle(SNESTheme.textDisabled)
                 Spacer()
-                Text("\(screens.count) ecran(s)")
+                Text("\(screens.count) screen(s)")
                     .font(.system(size: 10))
                     .foregroundStyle(SNESTheme.textDisabled)
             }
 
             if screens.isEmpty {
                 HStack(spacing: 8) {
-                    Text("Aucun ecran")
+                    Text("No screens")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textDisabled)
                     Button(action: { addScreen(to: zone) }) {
-                        Label("Creer", systemImage: "plus")
+                        Label("Create", systemImage: "plus")
                             .font(.system(size: 10))
                     }
                     .buttonStyle(.bordered)
@@ -114,13 +114,13 @@ struct ScreenListView: View {
                     Label("\(screen.layers.count) layers", systemImage: "square.3.layers.3d")
                         .font(.system(size: 10))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    Label("\(screen.entities.count) entites", systemImage: "mappin")
+                    Label("\(screen.entities.count) entities", systemImage: "mappin")
                         .font(.system(size: 10))
                         .foregroundStyle(SNESTheme.textSecondary)
                 }
 
                 // Grid position
-                Text("Grille (\(screen.gridX), \(screen.gridY))")
+                Text("Grid (\(screen.gridX), \(screen.gridY))")
                     .font(.system(size: 9, design: .monospaced))
                     .foregroundStyle(SNESTheme.textDisabled)
             }
@@ -147,7 +147,7 @@ struct ScreenListView: View {
                 Image(systemName: "plus")
                     .font(.system(size: 18))
                     .foregroundStyle(SNESTheme.textDisabled)
-                Text("Nouveau")
+                Text("New")
                     .font(.system(size: 11))
                     .foregroundStyle(SNESTheme.textDisabled)
             }
@@ -198,10 +198,10 @@ struct ScreenListView: View {
             Image(systemName: "square.grid.3x3.fill")
                 .font(.system(size: 32))
                 .foregroundStyle(SNESTheme.textDisabled)
-            Text("Aucune zone creee")
+            Text("No zones created")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(SNESTheme.textSecondary)
-            Text("Creez des zones et ecrans dans le World Manager\npour les retrouver ici.")
+            Text("Create zones and screens in the World Manager\nto find them here.")
                 .font(.system(size: 11))
                 .foregroundStyle(SNESTheme.textDisabled)
                 .multilineTextAlignment(.center)

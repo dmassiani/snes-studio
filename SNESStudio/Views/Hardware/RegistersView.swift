@@ -40,12 +40,12 @@ struct RegistersView: View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(SNESTheme.textDisabled)
-            TextField("Rechercher...", text: $searchText)
+            TextField("Search...", text: $searchText)
                 .textFieldStyle(.plain)
                 .font(.system(size: 12))
 
             Picker("", selection: $selectedCategory) {
-                Text("Tous").tag(RegisterCategory?.none)
+                Text("All").tag(RegisterCategory?.none)
                 ForEach(RegisterCategory.allCases) { cat in
                     Text(cat.rawValue).tag(RegisterCategory?.some(cat))
                 }
@@ -53,7 +53,7 @@ struct RegistersView: View {
             .pickerStyle(.menu)
             .frame(width: 100)
 
-            Text("\(filteredRegisters.count) registres")
+            Text("\(filteredRegisters.count) registers")
                 .font(.system(size: 11))
                 .foregroundStyle(SNESTheme.textDisabled)
         }
@@ -174,7 +174,7 @@ struct RegistersView: View {
                         // Category
                         Divider()
                         HStack {
-                            Text("Categorie")
+                            Text("Category")
                                 .font(.system(size: 11))
                                 .foregroundStyle(SNESTheme.textDisabled)
                             Spacer()
@@ -190,7 +190,7 @@ struct RegistersView: View {
                     Image(systemName: "list.clipboard")
                         .font(.system(size: 32))
                         .foregroundStyle(SNESTheme.textDisabled)
-                    Text("Selectionnez un registre")
+                    Text("Select a register")
                         .font(.system(size: 12))
                         .foregroundStyle(SNESTheme.textDisabled)
                 }

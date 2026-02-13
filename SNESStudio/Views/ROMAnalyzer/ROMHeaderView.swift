@@ -10,22 +10,22 @@ struct ROMHeaderView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 // File info
-                sectionHeader("Fichier")
-                infoRow("Nom", fileName)
-                infoRow("Taille", formatFileSize(fileSize))
-                infoRow("Header SMC", hasSMCHeader ? "Oui (512 octets)" : "Non")
+                sectionHeader("File")
+                infoRow("Name", fileName)
+                infoRow("Size", formatFileSize(fileSize))
+                infoRow("SMC Header", hasSMCHeader ? "Yes (512 bytes)" : "No")
 
                 Divider().padding(.vertical, 8)
 
                 // ROM Header
-                sectionHeader("Header SNES")
-                infoRow("Titre", header.title)
+                sectionHeader("SNES Header")
+                infoRow("Title", header.title)
                 infoRow("Mapping", header.mapping.rawValue)
-                infoRow("Vitesse", header.speed.rawValue)
+                infoRow("Speed", header.speed.rawValue)
                 infoRow("Chip Type", String(format: "$%02X", header.chipType))
                 infoRow("ROM Size", "\(header.romSizeKB) KB")
                 infoRow("RAM Size", "\(header.ramSizeKB) KB")
-                infoRow("Pays", header.countryName)
+                infoRow("Country", header.countryName)
 
                 Divider().padding(.vertical, 8)
 
@@ -56,7 +56,7 @@ struct ROMHeaderView: View {
                 Divider().padding(.vertical, 8)
 
                 // Vectors
-                sectionHeader("Vecteurs")
+                sectionHeader("Vectors")
                 infoRow("RESET", String(format: "$%04X", header.resetVector))
                 infoRow("NMI (VBlank)", String(format: "$%04X", header.nmiVector))
                 infoRow("IRQ", String(format: "$%04X", header.irqVector))
@@ -89,8 +89,8 @@ struct ROMHeaderView: View {
 
     private func formatFileSize(_ bytes: Int) -> String {
         if bytes >= 1024 * 1024 {
-            return String(format: "%.2f MB (%d octets)", Double(bytes) / (1024 * 1024), bytes)
+            return String(format: "%.2f MB (%d bytes)", Double(bytes) / (1024 * 1024), bytes)
         }
-        return String(format: "%.1f KB (%d octets)", Double(bytes) / 1024, bytes)
+        return String(format: "%.1f KB (%d bytes)", Double(bytes) / 1024, bytes)
     }
 }

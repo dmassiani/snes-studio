@@ -35,7 +35,7 @@ struct LayerViewerView: View {
 
     private var toolbar: some View {
         HStack(spacing: 12) {
-            Text("Couches BG")
+            Text("BG Layers")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(SNESTheme.textPrimary)
 
@@ -164,7 +164,7 @@ struct LayerViewerView: View {
                 Divider()
 
                 // Layer details
-                Text("Couches disponibles")
+                Text("Available Layers")
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundStyle(SNESTheme.textSecondary)
 
@@ -185,7 +185,7 @@ struct LayerViewerView: View {
                             Text(depth.label)
                                 .font(.system(size: 11, design: .monospaced))
                                 .foregroundStyle(SNESTheme.textSecondary)
-                            Text("\(layer.maxColors) couleurs")
+                            Text("\(layer.maxColors) colors")
                                 .font(.system(size: 11))
                                 .foregroundStyle(SNESTheme.textDisabled)
                         } else {
@@ -205,10 +205,10 @@ struct LayerViewerView: View {
                         Text("Mode 7 Special")
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundStyle(SNESTheme.warning)
-                        Text("Rotation/Scaling matrice 2D")
+                        Text("2D rotation/scaling matrix")
                             .font(.system(size: 11))
                             .foregroundStyle(SNESTheme.textSecondary)
-                        Text("1024 tiles 8x8, 256 couleurs")
+                        Text("1024 tiles 8x8, 256 colors")
                             .font(.system(size: 11))
                             .foregroundStyle(SNESTheme.textSecondary)
                         Text("128x128 tilemap")
@@ -226,10 +226,10 @@ struct LayerViewerView: View {
                     Text("128 sprites max, 4bpp")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    Text("32 par scanline")
+                    Text("32 per scanline")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textSecondary)
-                    Text("8 palettes de 16 couleurs")
+                    Text("8 palettes of 16 colors")
                         .font(.system(size: 11))
                         .foregroundStyle(SNESTheme.textSecondary)
                 }
